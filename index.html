@@ -248,15 +248,15 @@
   .csc-dot.on{background:#00e5c8;}
 
   /* ── CERTIFICATIONS ── */
-  .cert-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;}
-  .cert-c{background:#0d1520 !important;border:1px solid #1d2f42;border-radius:10px;padding:36px 28px;text-align:center;transition:all .3s;position:relative;overflow:hidden;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:flex-start !important;}
+  .cert-g{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch;}
+  .cert-c{background:#0d1520 !important;border:1px solid #1d2f42;border-radius:10px;padding:40px 28px;text-align:center;transition:all .3s;position:relative;overflow:hidden;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;min-height:280px !important;}
   .cert-c:hover{transform:translateY(-4px);}
   .cert-c::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
   .cert-c.ce::before{background:linear-gradient(90deg,#e05840,#ff8c69);}
   .cert-c.cw::before{background:linear-gradient(90deg,#3a8dff,#60c8ff);}
   .cert-c.ca::before{background:linear-gradient(90deg,#f5a623,#ffd166);}
-  .cert-badge{width:120px !important;height:120px !important;margin:0 auto 20px !important;display:flex !important;align-items:center !important;justify-content:center !important;background:#f0ece6 !important;border-radius:16px !important;padding:10px !important;box-shadow:0 4px 20px rgba(0,0,0,.5) !important;flex-shrink:0 !important;}
-  .cert-badge img{width:100px !important;height:100px !important;object-fit:contain !important;display:block !important;flex-shrink:0 !important;}
+  .cert-badge{width:120px !important;height:120px !important;margin:0 auto 20px !important;display:flex !important;align-items:center !important;justify-content:center !important;background:#f0ece6 !important;border-radius:16px !important;padding:12px !important;box-shadow:0 4px 20px rgba(0,0,0,.5) !important;flex-shrink:0 !important;}
+  .cert-badge img{width:96px !important;height:96px !important;object-fit:contain !important;object-position:center !important;display:block !important;flex-shrink:0 !important;}
   .cert-issuer{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8fafc8 !important;margin-bottom:6px;}
   .cert-name{font-family:'Space Mono',monospace;font-size:16px !important;font-weight:700;color:#dde6ef !important;margin-bottom:14px !important;}
   .cert-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px;border:1px solid;}
@@ -744,11 +744,8 @@
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-
-    // Hide previous messages
     msgOk.style.display='none'; msgErr.style.display='none';
 
-    // Check consent
     if (!document.getElementById('consent').checked) {
       alert('Veuillez accepter la politique de confidentialité pour envoyer votre message.');
       return;
@@ -758,21 +755,34 @@
     btn.textContent = 'Envoi en cours…';
 
     try {
-      const formData = new FormData(form);
+      const data = {
+        access_key: 'a480da27-d54b-4993-b7b7-a7a6da6f7e3d',
+        subject: 'Contact depuis portfolio — Margot Larvor',
+        from_name: 'Portfolio Margot Larvor',
+        first_name: document.getElementById('fname').value,
+        last_name: document.getElementById('lname').value,
+        email: document.getElementById('email').value,
+        sujet: document.getElementById('sujet').value,
+        message: document.getElementById('message').value,
+        botcheck: ''
+      };
+
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
       });
-      const data = await res.json();
-      if (data.success) {
+      const json = await res.json();
+      if (json.success) {
         msgOk.style.display='block';
         msgOk.className='form-msg success';
         form.reset();
         btn.textContent='Message envoyé ✓';
       } else {
-        throw new Error(data.message);
+        throw new Error(json.message || 'Erreur inconnue');
       }
     } catch(err) {
+      console.error('Form error:', err);
       msgErr.style.display='block';
       btn.disabled=false;
       btn.textContent='Envoyer le message →';
