@@ -1,326 +1,1095 @@
 <!DOCTYPE html>
-<html lang="fr" style="color-scheme:dark;background:#070b0e;">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark">
-<title>Margot Larvor · SEO · No-code · IA</title>
-<meta name="description" content="Chef de projet web · SEO on-site · No-code & IA · Référencement et automatisation.">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<title>Margot Larvor — Cheffe de projet web · Product Builder</title>
+<meta name="description" content="Portfolio de Margot Larvor · Cheffe de projet web & Product Builder · Audit SEO · No-code · IA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400;1,9..144,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
-  :root{color-scheme:dark;}
-  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;background:#070b0e !important;}
-  body{font-family:'DM Sans',sans-serif;font-size:16px !important;background:#070b0e !important;color:#dde6ef !important;overflow-x:hidden;-webkit-text-size-adjust:100%;}
+/* ═══════════════════════════════════════════
+   DESIGN SYSTEM
+═══════════════════════════════════════════ */
+:root {
+  --coral:    #E8370A;
+  --coral-2:  #FF5C30;
+  --orange:   #FF7A40;
+  --amber:    #FFB347;
+  --black:    #111010;
+  --bg:       #FDFBF8;
+  --surface:  #F6F2EB;
+  --border:   #EAE4DC;
+  --text-2:   #6B6460;
+  --text-3:   #A09890;
+  --white:    #FFFFFF;
 
-  .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(0,229,200,.025)1px,transparent 1px),linear-gradient(90deg,rgba(0,229,200,.025)1px,transparent 1px);background-size:48px 48px;}
+  --font-d: 'Plus Jakarta Sans', sans-serif;
+  --font-s: 'Fraunces', serif;
+  --font-b: 'DM Sans', sans-serif;
 
-  /* ── NAV ── */
-  nav{position:fixed;top:0;left:0;right:0;z-index:200;background:#070b0e !important;border-bottom:1px solid #1d2f42;height:60px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;}
-  .nav-logo{font-family:'Space Mono',monospace;font-size:16px;font-weight:700;color:#dde6ef !important;text-decoration:none;}
-  .nav-logo span{color:#00e5c8;}
-  .nav-links{display:flex;gap:22px;list-style:none;}
-  .nav-links a{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#8fafc8 !important;text-decoration:none;font-weight:500;transition:color .2s;}
-  .nav-links a:hover{color:#00e5c8 !important;}
-  .nav-cta{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.5px;padding:9px 18px;border:1.5px solid #00e5c8;border-radius:4px;color:#00e5c8 !important;text-decoration:none;background:transparent !important;display:inline-block;cursor:pointer;transition:all .2s;}
-  .nav-cta:hover{background:#00e5c8 !important;color:#070b0e !important;}
-  @media(max-width:680px){
-    .nav-links{display:none;}
-    .nav-links.open{display:flex;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:#070b0e !important;border-bottom:1px solid #1d2f42;padding:16px 5%;gap:4px;z-index:199;}
-    .nav-links.open a{padding:10px 0;font-size:12px;border-bottom:1px solid #1d2f42;}
-  }
-  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
-  .hamburger span{display:block;width:20px;height:2px;background:#8fafc8;transition:all .3s;border-radius:2px;}
-  @media(max-width:680px){.hamburger{display:flex;}}
+  --r-sm:  6px;
+  --r-md:  14px;
+  --r-lg:  24px;
+  --r-pill:100px;
 
-  /* ── SECTIONS ── */
-  section{position:relative;z-index:1;padding:110px 7%;background:#070b0e !important;color:#dde6ef !important;scroll-margin-top:60px;}
-  section.alt{background:#0c1218 !important;}
+  --shadow-sm: 0 1px 8px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 24px rgba(0,0,0,.09);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,.13);
+}
 
-  /* ── HERO ── */
-  .hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;}
-  .hero-glow{position:absolute;top:15%;right:5%;width:360px;height:360px;pointer-events:none;background:radial-gradient(circle,rgba(0,229,200,.07),transparent 70%);}
-  .hero-glow2{position:absolute;bottom:10%;left:2%;width:240px;height:240px;pointer-events:none;background:radial-gradient(circle,rgba(0,153,255,.05),transparent 70%);}
-  .hero-content{max-width:680px;position:relative;z-index:2;}
+/* ═══ RESET ═══ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--font-b); background:var(--bg); color:var(--black); line-height:1.65; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+img { display:block; max-width:100%; }
+a { color:inherit; text-decoration:none; }
 
-  .hero-tag{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:#00e5c8 !important;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
-  .hero-tag::before{content:'//';color:#8fafc8;}
-  .hero h1{font-family:'Space Mono',monospace;font-size:clamp(34px,6vw,60px);font-weight:700;line-height:1.1;letter-spacing:-1px;color:#dde6ef !important;margin-bottom:12px;}
-  .hero h1 .accent{color:#00e5c8 !important;display:block;}
-  .hero-sub{font-size:17px;color:#8fafc8 !important;line-height:1.75;margin-bottom:12px;max-width:560px;}
-  .hero-sub strong{color:#dde6ef !important;font-weight:500;}
+/* ═══ TYPOGRAPHY ═══ */
+.display {
+  font-family:var(--font-d);
+  font-weight:800;
+  line-height:1;
+  letter-spacing:-0.03em;
+}
+.serif-italic {
+  font-family:var(--font-s);
+  font-style:italic;
+  font-weight:300;
+}
+.label {
+  font-family:var(--font-d);
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.mono {
+  font-family:'DM Mono', monospace;
+  font-size:.85em;
+}
 
-  .evolve-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#7b61ff !important;background:rgba(123,97,255,.1) !important;border:1px solid rgba(123,97,255,.3);border-radius:20px;padding:6px 14px;margin-bottom:28px;}
-  .evolve-badge .spark{font-size:14px;}
+/* ═══ NAV ═══ */
+nav {
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5%;
+  height:62px;
+  background:rgba(253,251,248,.92);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo {
+  font-family:var(--font-d);
+  font-weight:800;
+  font-size:1.1rem;
+  letter-spacing:-.02em;
+  color:var(--black);
+}
+.nav-logo em {
+  color:var(--coral);
+  font-style:normal;
+}
+.nav-links {
+  display:flex;
+  gap:32px;
+  list-style:none;
+}
+.nav-links a {
+  font-family:var(--font-d);
+  font-size:.85rem;
+  font-weight:600;
+  color:var(--text-2);
+  transition:color .2s;
+}
+.nav-links a:hover { color:var(--black); }
+.nav-cta {
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-family:var(--font-d);
+  font-size:.85rem;
+  font-weight:700;
+  padding:9px 20px;
+  background:var(--black);
+  color:var(--white);
+  border-radius:var(--r-pill);
+  transition:all .2s;
+}
+.nav-cta:hover { background:var(--coral); transform:translateY(-1px); }
+.nav-cta svg { width:14px; height:14px; }
 
-  .hero-stats{display:flex;flex-wrap:wrap;margin-bottom:36px;border:1px solid #1d2f42;border-radius:8px;overflow:hidden;background:#0d1520 !important;}
-  .hero-stat{flex:1;min-width:75px;padding:14px 8px;text-align:center;border-right:1px solid #1d2f42;}
-  .hero-stat:last-child{border-right:none;}
-  .hero-stat-num{font-family:'Space Mono',monospace;font-size:22px;font-weight:700;color:#00e5c8 !important;line-height:1;display:block;}
-  .hero-stat-label{font-size:11px;color:#8fafc8 !important;margin-top:4px;line-height:1.3;display:block;}
+@media(max-width:680px) {
+  .nav-links { display:none; }
+}
 
-  .btn-group{display:flex;gap:12px;flex-wrap:wrap;}
-  .btn-p{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.5px;padding:14px 26px;background:#00e5c8 !important;color:#070b0e !important;text-decoration:none;border-radius:4px;font-weight:700;border:1.5px solid #00e5c8;display:inline-block;cursor:pointer;transition:all .2s;}
-  .btn-p:hover{background:#00b8a3 !important;}
-  .btn-s{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.5px;padding:14px 26px;border:1.5px solid #1d2f42;color:#8fafc8 !important;text-decoration:none;border-radius:4px;background:transparent !important;display:inline-block;cursor:pointer;transition:all .2s;}
-  .btn-s:hover{border-color:#8fafc8;color:#dde6ef !important;}
+/* ═══ HERO ═══ */
+.hero {
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:0 5%;
+  padding-top:62px;
+  gap:40px;
+  position:relative;
+  overflow:hidden;
+}
 
-  /* ── SECTION HEADERS ── */
-  .sh{margin-bottom:56px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;}
-  .st{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#00e5c8 !important;margin-bottom:8px;}
-  .st::before{content:'// ';}
-  .sh h2{font-family:'Space Mono',monospace;font-size:clamp(20px,3vw,32px);font-weight:700;color:#dde6ef !important;letter-spacing:-.5px;line-height:1.2;}
-  .sh-desc{font-size:15px !important;color:#8fafc8 !important;max-width:320px;line-height:1.6;text-align:right;}
-  @media(max-width:600px){.sh-desc{text-align:left;max-width:100%;}}
+/* Background decorative dots grid */
+.hero::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity:.5;
+  z-index:0;
+  pointer-events:none;
+}
 
-  /* ── SKILLS ── */
-  .g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
-  .sc{background:#0d1520 !important;border:1px solid #1d2f42;border-radius:8px;padding:28px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;}
-  .sc:hover{border-color:rgba(0,229,200,.3);transform:translateY(-3px);}
-  .sc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
-  .sc.s1::before{background:linear-gradient(90deg,#00e5c8,transparent);}
-  .sc.s2::before{background:linear-gradient(90deg,#0099ff,transparent);}
-  .sc.s3::before{background:linear-gradient(90deg,#7b61ff,transparent);}
-  .sc.s4::before{background:linear-gradient(90deg,#ff7b4a,transparent);}
-  .sc.s5::before{background:linear-gradient(90deg,#00e5c8,#7b61ff);}
-  .sc-ico{font-size:22px;margin-bottom:10px;}
-  .sc-t{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:#dde6ef !important;margin-bottom:4px;}
-  .sc-sub{font-size:13px;color:#8fafc8 !important;margin-bottom:12px;font-style:italic;}
-  .tags{display:flex;flex-wrap:wrap;gap:6px;}
-  .tag{font-size:12px;padding:4px 9px;background:#111a22 !important;border:1px solid #1d2f42;border-radius:3px;color:#8fafc8 !important;}
-  .tag.hi{border-color:rgba(0,229,200,.35);color:#00e5c8 !important;background:rgba(0,229,200,.06) !important;}
-  .tag.hi2{border-color:rgba(123,97,255,.35);color:#a78bfa !important;background:rgba(123,97,255,.06) !important;}
-  .tag.new{border-color:rgba(123,97,255,.5);color:#c4b5fd !important;background:rgba(123,97,255,.1) !important;}
+.hero-left {
+  position:relative;
+  z-index:2;
+  padding:60px 0;
+}
+.hero-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--font-d);
+  font-size:.8rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--coral);
+  background:rgba(232,55,10,.08);
+  border:1.5px solid rgba(232,55,10,.2);
+  border-radius:var(--r-pill);
+  padding:6px 14px;
+  margin-bottom:28px;
+}
+.hero-badge::before { content:'●'; font-size:.6rem; animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
 
-  .badge-wip{display:inline-block;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#7b61ff !important;background:rgba(123,97,255,.15) !important;border:1px solid rgba(123,97,255,.3);border-radius:3px;padding:2px 6px;margin-left:6px;vertical-align:middle;}
+.hero-name {
+  font-family:var(--font-d);
+  font-weight:800;
+  font-size:clamp(3.5rem, 7vw, 6rem);
+  line-height:1;
+  letter-spacing:-.04em;
+  color:var(--black);
+  margin-bottom:4px;
+}
+.hero-name .line2 { color:var(--coral); }
 
-  /* ── CASE STUDIES ── */
-  .scale-banner{background:#0d1520 !important;border:1px solid #1d2f42;border-radius:8px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:28px;}
-  .scale-banner-label{font-size:15px !important;color:#8fafc8 !important;line-height:1.6;}
-  .scale-banner-label strong{color:#dde6ef !important;font-family:'Space Mono',monospace;}
-  .scale-banner-stats{display:flex;gap:24px;flex-wrap:wrap;}
-  .scale-s{text-align:center;}
-  .scale-s-num{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:#00e5c8 !important;display:block;line-height:1;}
-  .scale-s-label{font-size:11px;color:#8fafc8 !important;letter-spacing:.5px;margin-top:3px;display:block;}
+.hero-subtitle {
+  font-family:var(--font-s);
+  font-style:italic;
+  font-weight:300;
+  font-size:clamp(1.2rem, 2vw, 1.5rem);
+  color:var(--text-2);
+  margin-top:14px;
+  margin-bottom:36px;
+  letter-spacing:.01em;
+}
 
-  .csg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
-  .csc{background:#0d1520 !important;border:1px solid #1d2f42;border-radius:10px;padding:28px;transition:all .3s;position:relative;overflow:hidden;}
-  .csc:hover{border-color:rgba(0,229,200,.25);transform:translateY(-3px);}
-  .csc-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;}
-  .csc-ico{font-size:20px;flex-shrink:0;margin-top:2px;}
-  .csc-sector{font-family:'Space Mono',monospace;font-size:14px !important;font-weight:700;color:#dde6ef !important;line-height:1.3 !important;}
-  .csc-type{font-size:13px;color:#8fafc8 !important;margin-top:3px;font-style:italic;}
-  .csc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
-  .csc-tag{font-size:11px;padding:3px 8px;border-radius:3px;border:1px solid;line-height:1.4;}
-  .csc-tag.t-audit{border-color:rgba(0,229,200,.4);color:#00e5c8 !important;background:rgba(0,229,200,.06) !important;}
-  .csc-tag.t-redac{border-color:rgba(0,153,255,.4);color:#60aeff !important;background:rgba(0,153,255,.06) !important;}
-  .csc-tag.t-visuel{border-color:rgba(123,97,255,.4);color:#a78bfa !important;background:rgba(123,97,255,.06) !important;}
-  .csc-tag.t-pages{border-color:rgba(255,123,74,.4);color:#ff9d6e !important;background:rgba(255,123,74,.06) !important;}
-  .csc-tag.t-local{border-color:rgba(255,213,79,.4);color:#ffd54f !important;background:rgba(255,213,79,.06) !important;}
-  .csc-tag.t-lp{border-color:rgba(0,229,200,.2);color:#7fb5cc !important;background:rgba(0,229,200,.03) !important;}
-  .csc-divider{height:1px;background:#1d2f42;margin:12px 0;}
-  .csc-note{font-size:15px !important;color:#8fafc8 !important;line-height:1.7 !important;}
-  .csc-complexity{position:absolute;top:16px;right:16px;display:flex;gap:3px;}
-  .csc-dot{width:6px;height:6px;border-radius:50%;background:#1d2f42;}
-  .csc-dot.on{background:#00e5c8;}
+.hero-pills {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:44px;
+}
+.hero-pill {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:var(--font-d);
+  font-size:.85rem;
+  font-weight:600;
+  padding:8px 16px;
+  background:var(--white);
+  border:1.5px solid var(--border);
+  border-radius:var(--r-pill);
+  color:var(--black);
+  box-shadow:var(--shadow-sm);
+  transition:all .25s;
+}
+.hero-pill:hover {
+  border-color:var(--coral);
+  color:var(--coral);
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-md);
+}
+.hero-pill .dot {
+  width:7px; height:7px;
+  border-radius:50%;
+  background:var(--coral);
+  flex-shrink:0;
+}
 
-  /* ── SHADOW PROJECT BLOCKS ── */
-  .shadow-block{margin-top:12px;}
-  .shadow-label{display:inline-block;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:2px 8px;border-radius:4px;margin-bottom:5px;}
-  .shadow-label--problem{background:rgba(239,68,68,.15);color:#f87171;}
-  .shadow-label--solution{background:rgba(99,102,241,.15);color:#818cf8;}
-  .shadow-label--impact{background:rgba(16,185,129,.15);color:#34d399;}
-  .shadow-text{font-size:0.82rem;color:#94a3b8;line-height:1.55;margin:0;}
+.hero-ctas {
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.btn-primary {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--font-d);
+  font-size:.9rem;
+  font-weight:700;
+  padding:14px 28px;
+  background:var(--coral);
+  color:var(--white);
+  border-radius:var(--r-pill);
+  transition:all .25s;
+}
+.btn-primary:hover { background:var(--coral-2); transform:translateY(-2px); box-shadow:0 8px 24px rgba(232,55,10,.3); }
+.btn-ghost {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--font-d);
+  font-size:.9rem;
+  font-weight:600;
+  padding:14px 28px;
+  border:1.5px solid var(--border);
+  border-radius:var(--r-pill);
+  color:var(--text-2);
+  background:transparent;
+  transition:all .25s;
+}
+.btn-ghost:hover { border-color:var(--black); color:var(--black); transform:translateY(-2px); }
 
-  /* ── RESOURCES ── */
-  .rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-  .rc{background:#0d1520 !important;border:1px solid #1d2f42;border-radius:10px;padding:32px;position:relative;overflow:hidden;transition:all .3s;}
-  .rc:hover{border-color:rgba(0,229,200,.3);transform:translateY(-3px);}
-  .rc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-  .rc:nth-child(1)::before{background:linear-gradient(90deg,#00e5c8,#0099ff);}
-  .rc:nth-child(2)::before{background:linear-gradient(90deg,#0099ff,#7b61ff);}
-  .rc:nth-child(3)::before{background:linear-gradient(90deg,#7b61ff,#00e5c8);}
-  .re{font-size:24px;margin-bottom:10px;}
-  .rt{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#dde6ef !important;margin-bottom:4px;line-height:1.3;}
-  .rs{font-size:14px;font-weight:600;color:#00e5c8 !important;margin-bottom:8px;}
-  .rd{font-size:15px !important;color:#8fafc8 !important;line-height:1.7 !important;margin-bottom:16px !important;}
-  .rf{list-style:none;display:flex;flex-direction:column;gap:5px;}
-  .rf li{font-size:15px !important;color:#8fafc8 !important;padding-left:14px;position:relative;line-height:1.5;}
-  .rf li::before{content:'▸';position:absolute;left:0;color:#00e5c8;font-size:10px;top:2px;}
+/* Hero right — coral gradient sphere */
+.hero-right {
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:500px;
+}
+.sphere {
+  position:absolute;
+  width:380px;
+  height:380px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%, #FF8C40 0%, var(--coral) 40%, #CC2800 100%);
+  box-shadow: 0 0 120px rgba(232,55,10,.3);
+  animation:breathe 6s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,100% { transform:scale(1) rotate(0deg); }
+  50% { transform:scale(1.04) rotate(2deg); }
+}
 
-  /* ── ABOUT ── */
-  .ag{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-  @media(max-width:700px){.ag{grid-template-columns:1fr;}}
-  .at p{font-size:16px !important;color:#8fafc8 !important;line-height:1.8;margin-bottom:16px;}
-  .at p strong{color:#dde6ef !important;font-weight:500;}
-  .at p .hl{color:#00e5c8 !important;}
-  .at p .hl2{color:#a78bfa !important;}
-  .aq{display:flex;flex-direction:column;gap:10px;}
-  .ai{background:#0d1520 !important;border:1px solid #1d2f42;border-radius:8px;padding:18px 20px;display:flex;align-items:center;gap:12px;}
-  .ai-ico{font-size:18px;flex-shrink:0;}
-  .ai-t strong{display:block;font-size:15px;font-weight:600;color:#dde6ef !important;margin-bottom:2px;}
-  .ai-t span{font-size:14px !important;color:#8fafc8 !important;}
+/* Floating decorative tags around sphere */
+.float-tag {
+  position:absolute;
+  font-family:var(--font-d);
+  font-size:.8rem;
+  font-weight:700;
+  padding:8px 16px;
+  background:var(--white);
+  border-radius:var(--r-pill);
+  box-shadow:var(--shadow-md);
+  color:var(--black);
+  white-space:nowrap;
+  animation:float 4s ease-in-out infinite;
+}
+.float-tag--1  { top:8%;  left:-5%;  animation-delay:0s;    --dy:-10px; }
+.float-tag--2  { top:22%; right:-10%;animation-delay:.8s;   --dy:-8px; }
+.float-tag--3  { top:54%; right:-15%;animation-delay:1.6s;  --dy:-12px; }
+.float-tag--4  { bottom:18%; left:-8%; animation-delay:2.4s; --dy:-9px; }
+.float-tag--5  { bottom:35%; right:-5%;animation-delay:.4s;  --dy:-7px; }
+.float-tag--asterisk {
+  font-size:1.8rem;
+  padding:0;
+  background:transparent;
+  box-shadow:none;
+  color:var(--orange);
+  font-weight:900;
+}
+.float-tag--a1 { top:5%;  right:20%; animation-delay:1s;   --dy:-14px; }
+.float-tag--a2 { bottom:12%; left:25%; animation-delay:2s;  --dy:-11px; }
 
-  /* ── CONTACT FORM ── */
-  .cw{max-width:600px;min-width:400px;margin:0 auto;}
-  .cb{background:#0d1520 !important;border:1px solid #1d2f42;border-radius:12px;padding:40px 36px;position:relative;overflow:hidden;}
-  .cb::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00e5c8,#0099ff,#7b61ff);}
-  .cb h3{font-family:'Space Mono',monospace;font-size:18px;font-weight:700;color:#dde6ef !important;margin-bottom:8px;}
-  .cb > p{font-size:15px !important;color:#8fafc8 !important;line-height:1.7;margin-bottom:28px;}
+@keyframes float {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(var(--dy,-8px)); }
+}
 
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
-  @media(max-width:500px){.form-row{grid-template-columns:1fr;}}
-  .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
-  .form-group label{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#8fafc8 !important;font-weight:600;}
-  .form-group label .req{color:#00e5c8;}
+/* ═══ STATS BAR ═══ */
+.stats-bar {
+  background:var(--black);
+  padding:28px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  flex-wrap:wrap;
+}
+.stat-item {
+  display:flex;
+  align-items:center;
+  gap:24px;
+  padding:0 40px;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.stat-item:last-child { border-right:none; }
+.stat-num {
+  font-family:var(--font-d);
+  font-size:2.2rem;
+  font-weight:800;
+  color:var(--white);
+  line-height:1;
+}
+.stat-num span { color:var(--coral-2); }
+.stat-label {
+  font-size:.8rem;
+  color:rgba(255,255,255,.5);
+  line-height:1.4;
+  max-width:90px;
+}
 
-  input[type=text],input[type=email],textarea,select{width:100%;padding:12px 14px;background:#111a22 !important;border:1px solid #1d2f42;border-radius:6px;color:#dde6ef !important;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;}
-  input[type=text]:focus,input[type=email]:focus,textarea:focus{border-color:#00e5c8;}
-  textarea{resize:vertical;min-height:110px;}
-  ::placeholder{color:#4a6278 !important;}
+/* ═══ SECTION BASE ═══ */
+section {
+  padding:100px 5%;
+  scroll-margin-top:62px;
+}
+section.surface { background:var(--surface); }
 
-  .consent-block{background:#111a22 !important;border:1px solid #1d2f42;border-radius:8px;padding:16px;margin-bottom:18px;}
-  .consent-line{display:flex;align-items:flex-start;gap:12px;}
-  .consent-line input[type=checkbox]{width:18px;height:18px;flex-shrink:0;margin-top:2px;cursor:pointer;accent-color:#00e5c8;}
-  .consent-line label{font-size:13px;color:#8fafc8 !important;line-height:1.6;cursor:pointer;}
-  .consent-line label a{color:#00e5c8 !important;text-decoration:none;}
-  .consent-line label a:hover{text-decoration:underline;}
-  .consent-info{font-size:12px;color:#4a6278 !important;margin-top:10px;line-height:1.5;padding-left:30px;}
+.section-eyebrow {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+}
+.section-eyebrow .line {
+  flex:1;
+  max-width:48px;
+  height:2px;
+  background:var(--coral);
+  border-radius:2px;
+}
+.section-eyebrow span {
+  font-family:var(--font-d);
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--coral);
+}
+.section-title {
+  font-family:var(--font-d);
+  font-weight:800;
+  font-size:clamp(1.8rem, 3.5vw, 2.8rem);
+  letter-spacing:-.03em;
+  line-height:1.1;
+  color:var(--black);
+  margin-bottom:16px;
+}
+.section-desc {
+  font-size:1.05rem;
+  color:var(--text-2);
+  max-width:520px;
+  line-height:1.7;
+}
+.section-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:20px;
+  margin-bottom:56px;
+}
 
-  .btn-submit{width:100%;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.5px;padding:15px;background:#00e5c8 !important;color:#070b0e !important;border:none;border-radius:6px;font-weight:700;cursor:pointer;transition:all .2s;}
-  .btn-submit:hover{background:#00b8a3 !important;}
-  .btn-submit:disabled{background:#1d2f42 !important;color:#4a6278 !important;cursor:not-allowed;}
+/* ═══ SKILLS / STACK ═══ */
+.skills-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:20px;
+}
+.skill-card {
+  background:var(--white);
+  border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+  transition:all .3s;
+}
+.skill-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:3px;
+  border-radius:3px 3px 0 0;
+}
+.skill-card.c1::before { background:linear-gradient(90deg,var(--coral),var(--orange)); }
+.skill-card.c2::before { background:linear-gradient(90deg,var(--orange),var(--amber)); }
+.skill-card.c3::before { background:linear-gradient(90deg,#7B61FF,#A78BFF); }
+.skill-card.c4::before { background:linear-gradient(90deg,#0EA5E9,#38BDF8); }
+.skill-card:hover { border-color:transparent; box-shadow:var(--shadow-lg); transform:translateY(-4px); }
+.skill-card-icon { font-size:1.6rem; margin-bottom:14px; }
+.skill-card-title {
+  font-family:var(--font-d);
+  font-size:1rem;
+  font-weight:800;
+  margin-bottom:4px;
+  color:var(--black);
+}
+.skill-card-sub {
+  font-size:.8rem;
+  color:var(--text-3);
+  margin-bottom:18px;
+  font-style:italic;
+}
+.tag-cloud { display:flex; flex-wrap:wrap; gap:6px; }
+.tag {
+  font-family:var(--font-d);
+  font-size:.78rem;
+  font-weight:600;
+  padding:4px 10px;
+  border-radius:var(--r-pill);
+  background:var(--surface);
+  color:var(--text-2);
+  border:1px solid var(--border);
+  transition:all .2s;
+}
+.tag.hi {
+  background:rgba(232,55,10,.08);
+  color:var(--coral);
+  border-color:rgba(232,55,10,.2);
+}
+.tag.hi2 {
+  background:rgba(123,97,255,.08);
+  color:#7B61FF;
+  border-color:rgba(123,97,255,.2);
+}
+.tag.wip {
+  background:rgba(255,122,64,.08);
+  color:var(--orange);
+  border-color:rgba(255,122,64,.2);
+  font-style:italic;
+}
 
-  .form-msg{display:none;padding:14px 16px;border-radius:6px;font-size:13px;margin-top:14px;text-align:center;}
-  .form-msg.success{background:rgba(0,229,200,.1) !important;border:1px solid rgba(0,229,200,.3);color:#00e5c8 !important;display:block;}
-  .form-msg.error{background:rgba(239,68,68,.1) !important;border:1px solid rgba(239,68,68,.3);color:#fca5a5 !important;display:block;}
+/* ═══ SCALE BANNER ═══ */
+.scale-banner {
+  background:var(--white);
+  border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  padding:24px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+  margin-bottom:40px;
+  position:relative;
+  overflow:hidden;
+}
+.scale-banner::before {
+  content:'';
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width:4px;
+  background:linear-gradient(180deg, var(--coral), var(--orange));
+}
+.scale-banner-text {
+  font-size:1rem;
+  color:var(--text-2);
+  line-height:1.5;
+}
+.scale-banner-text strong { color:var(--black); font-family:var(--font-d); }
+.scale-stats { display:flex; gap:36px; flex-wrap:wrap; }
+.scale-stat-num {
+  font-family:var(--font-d);
+  font-size:1.8rem;
+  font-weight:800;
+  color:var(--coral);
+  line-height:1;
+  display:block;
+}
+.scale-stat-label {
+  font-size:.75rem;
+  color:var(--text-3);
+  margin-top:2px;
+  letter-spacing:.04em;
+  display:block;
+}
 
-  .ab{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:13px;color:#00e5c8 !important;background:rgba(0,229,200,.08) !important;border:1px solid rgba(0,229,200,.2);border-radius:20px;padding:7px 18px;}
-  .dot{width:7px;height:7px;border-radius:50%;background:#00e5c8;animation:blink 1.5s ease-in-out infinite;}
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+/* ═══ CASE STUDIES ═══ */
+.cases-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-bottom:20px;
+}
+.case-card {
+  background:var(--white);
+  border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+  transition:all .3s;
+}
+.case-card:hover { border-color:var(--coral); box-shadow:var(--shadow-md); transform:translateY(-3px); }
+.case-card-header { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.case-card-icon { font-size:1.4rem; flex-shrink:0; margin-top:2px; }
+.case-sector {
+  font-family:var(--font-d);
+  font-size:1.05rem;
+  font-weight:700;
+  color:var(--black);
+  line-height:1.3;
+  margin-bottom:3px;
+}
+.case-type { font-size:.82rem; color:var(--text-3); }
+.case-chips { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:14px; }
+.chip {
+  font-size:.72rem;
+  font-weight:600;
+  padding:3px 9px;
+  border-radius:var(--r-pill);
+  border:1px solid;
+}
+.chip.audit   { color:#059669; border-color:rgba(5,150,105,.3); background:rgba(5,150,105,.07); }
+.chip.redac   { color:#0EA5E9; border-color:rgba(14,165,233,.3); background:rgba(14,165,233,.07); }
+.chip.visuel  { color:#7C3AED; border-color:rgba(124,58,237,.3); background:rgba(124,58,237,.07); }
+.chip.pages   { color:var(--coral); border-color:rgba(232,55,10,.3); background:rgba(232,55,10,.07); }
+.chip.local   { color:#D97706; border-color:rgba(217,119,6,.3); background:rgba(217,119,6,.07); }
+.chip.lp      { color:#6B7280; border-color:rgba(107,114,128,.3); background:rgba(107,114,128,.07); }
 
-  /* ── CERTIFICATIONS ── */
-  .cert-g{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch;}
-  .cert-c{background:#0d1520 !important;border:1px solid #1d2f42;border-radius:10px;padding:40px 28px;text-align:center;transition:all .3s;position:relative;overflow:hidden;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;min-height:280px !important;}
-  .cert-c:hover{transform:translateY(-4px);}
-  .cert-c::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-  .cert-c.ce::before{background:linear-gradient(90deg,#e05840,#ff8c69);}
-  .cert-c.cw::before{background:linear-gradient(90deg,#3a8dff,#60c8ff);}
-  .cert-c.ca::before{background:linear-gradient(90deg,#f5a623,#ffd166);}
-  .cert-badge{width:120px !important;height:120px !important;margin:0 auto 20px !important;display:flex !important;align-items:center !important;justify-content:center !important;background:#f0ece6 !important;border-radius:16px !important;padding:12px !important;box-shadow:0 4px 20px rgba(0,0,0,.5) !important;flex-shrink:0 !important;}
-  .cert-badge img{width:96px !important;height:96px !important;object-fit:contain !important;object-position:center !important;display:block !important;flex-shrink:0 !important;}
-  .cert-issuer{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8fafc8 !important;margin-bottom:6px;}
-  .cert-name{font-family:'Space Mono',monospace;font-size:16px !important;font-weight:700;color:#dde6ef !important;margin-bottom:14px !important;}
-  .cert-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px;border:1px solid;}
-  .cert-c.ce .cert-tag{color:#e05840 !important;border-color:rgba(224,88,64,.35);background:rgba(224,88,64,.08) !important;}
-  .cert-c.cw .cert-tag{color:#3a8dff !important;border-color:rgba(58,141,255,.35);background:rgba(58,141,255,.08) !important;}
-  .cert-c.ca .cert-tag{color:#f5a623 !important;border-color:rgba(245,166,35,.35);background:rgba(245,166,35,.08) !important;}
+.case-divider { height:1px; background:var(--border); margin:14px 0; }
+.shadow-label {
+  display:inline-block;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:2px 8px;
+  border-radius:4px;
+  margin-bottom:4px;
+}
+.sl-problem  { background:rgba(239,68,68,.1); color:#DC2626; }
+.sl-solution { background:rgba(99,102,241,.1); color:#4F46E5; }
+.sl-impact   { background:rgba(16,185,129,.1); color:#059669; }
+.shadow-text { font-size:.85rem; color:var(--text-2); line-height:1.6; margin-bottom:10px; }
+.case-note   { font-size:.88rem; color:var(--text-2); line-height:1.65; }
+.complexity  { position:absolute; top:16px; right:16px; display:flex; gap:3px; }
+.cdot { width:7px; height:7px; border-radius:50%; background:var(--border); }
+.cdot.on { background:var(--coral); }
 
-  /* ── LEGAL ── */
-  .lg{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-  @media(max-width:600px){.lg{grid-template-columns:1fr;}}
-  .lc{background:#0d1520 !important;border:1px solid #1d2f42;border-radius:8px;padding:28px;}
-  .lc h3{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#00e5c8 !important;margin-bottom:12px;letter-spacing:.5px;}
-  .lc p,.lc li{font-size:15px !important;color:#8fafc8 !important;line-height:1.7;margin-bottom:8px;}
-  .lc ul{padding-left:16px;}
-  .lc strong{color:#dde6ef !important;font-weight:500;}
-  .lc a{color:#00e5c8 !important;text-decoration:none;}
-  .lc a:hover{text-decoration:underline;}
+/* Featured RENOBAT card — full width */
+.case-featured {
+  background:var(--white);
+  border:2px solid var(--border);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  transition:all .3s;
+}
+.case-featured:hover { border-color:var(--coral); box-shadow:var(--shadow-lg); }
+.case-featured-head {
+  background:linear-gradient(135deg, var(--coral) 0%, var(--orange) 100%);
+  padding:32px 36px;
+  color:var(--white);
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.case-featured-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:var(--font-d);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:5px 12px;
+  background:rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:var(--r-pill);
+  color:var(--white);
+  margin-bottom:12px;
+}
+.case-featured-title {
+  font-family:var(--font-d);
+  font-size:1.5rem;
+  font-weight:800;
+  line-height:1.2;
+  letter-spacing:-.02em;
+}
+.case-featured-meta {
+  font-size:.85rem;
+  opacity:.8;
+  margin-top:6px;
+}
+.case-featured-body {
+  padding:36px;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:24px;
+}
+.cfb-col h4 {
+  font-family:var(--font-d);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.cfb-col h4.problem  { color:#DC2626; }
+.cfb-col h4.solution { color:#4F46E5; }
+.cfb-col h4.impact   { color:#059669; }
+.cfb-col p { font-size:.88rem; color:var(--text-2); line-height:1.65; }
+.case-featured-footer {
+  padding:24px 36px;
+  border-top:1.5px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px;
+  background:var(--surface);
+}
+.cfooter-block h5 {
+  font-family:var(--font-d);
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--text-3);
+  margin-bottom:6px;
+}
+.cfooter-block p { font-size:.85rem; color:var(--text-2); }
+.cfooter-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.cfooter-tag {
+  font-size:.75rem;
+  font-weight:600;
+  padding:4px 10px;
+  border-radius:var(--r-pill);
+  background:rgba(232,55,10,.08);
+  color:var(--coral);
+  border:1px solid rgba(232,55,10,.18);
+}
 
-  /* ── FOOTER ── */
-  footer{position:relative;z-index:1;background:#070b0e !important;padding:20px 6%;border-top:1px solid #1d2f42;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
-  footer p{font-family:'Space Mono',monospace;font-size:13px;color:#8fafc8 !important;}
-  footer span{color:#00e5c8 !important;}
-  footer a{color:#8fafc8 !important;text-decoration:none;}
-  footer a:hover{color:#00e5c8 !important;}
+/* ═══ RESOURCES ═══ */
+.resources-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+  gap:20px;
+}
+.res-card {
+  background:var(--white);
+  border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+  transition:all .3s;
+  display:flex;
+  flex-direction:column;
+}
+.res-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:3px;
+}
+.res-card:nth-child(1)::before { background:linear-gradient(90deg,var(--coral),var(--orange)); }
+.res-card:nth-child(2)::before { background:linear-gradient(90deg,var(--orange),var(--amber)); }
+.res-card:nth-child(3)::before { background:linear-gradient(90deg,#7B61FF,#A78BFF); }
+.res-card:nth-child(4)::before { background:linear-gradient(90deg,#0EA5E9,#38BDF8); }
+.res-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:transparent; }
+.res-icon { font-size:1.6rem; margin-bottom:14px; }
+.res-title {
+  font-family:var(--font-d);
+  font-size:.95rem;
+  font-weight:800;
+  color:var(--black);
+  margin-bottom:3px;
+}
+.res-sub { font-size:.78rem; color:var(--coral); font-weight:600; margin-bottom:10px; }
+.res-desc { font-size:.85rem; color:var(--text-2); line-height:1.6; flex:1; }
+.res-link {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  font-family:var(--font-d);
+  font-size:.8rem;
+  font-weight:700;
+  color:var(--coral);
+  margin-top:16px;
+  transition:gap .2s;
+}
+.res-link:hover { gap:9px; }
 
-  /* ── REVEAL ── */
-  .rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
-  .rv.on{opacity:1;transform:translateY(0);}
-  .fu{opacity:0;transform:translateY(22px);animation:fuAnim .7s ease forwards;}
-  @keyframes fuAnim{to{opacity:1;transform:translateY(0);}}
-  .d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}
+/* ═══ CERTIFICATIONS ═══ */
+.cert-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.cert-card {
+  background:var(--white);
+  border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  padding:36px 24px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  transition:all .3s;
+}
+.cert-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+.cert-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:4px;
+}
+.cert-card.ce::before { background:linear-gradient(90deg,#CC3300,#FF6644); }
+.cert-card.cw::before { background:linear-gradient(90deg,#2266CC,#55AAFF); }
+.cert-card.ca::before { background:linear-gradient(90deg,#CC8800,#FFCC33); }
+.cert-badge-wrap {
+  width:100px;
+  height:100px;
+  margin:0 auto 20px;
+  background:#F5F3F0;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.08);
+}
+.cert-badge-wrap img {
+  width:80px;
+  height:80px;
+  object-fit:contain;
+}
+.cert-issuer {
+  font-size:.72rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--text-3);
+  margin-bottom:5px;
+}
+.cert-name {
+  font-family:var(--font-d);
+  font-size:1.1rem;
+  font-weight:800;
+  color:var(--black);
+  margin-bottom:14px;
+}
+.cert-pill {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  font-size:.75rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  padding:5px 12px;
+  border-radius:var(--r-pill);
+  border:1px solid;
+}
+.cert-card.ce .cert-pill { color:#CC3300; border-color:rgba(204,51,0,.25); background:rgba(204,51,0,.06); }
+.cert-card.cw .cert-pill { color:#2266CC; border-color:rgba(34,102,204,.25); background:rgba(34,102,204,.06); }
+.cert-card.ca .cert-pill { color:#CC8800; border-color:rgba(204,136,0,.25); background:rgba(204,136,0,.06); }
+
+/* ═══ ABOUT ═══ */
+.about-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:start;
+}
+.about-text p {
+  font-size:1.05rem;
+  color:var(--text-2);
+  line-height:1.8;
+  margin-bottom:18px;
+}
+.about-text p strong { color:var(--black); font-weight:600; }
+.about-text .hl { color:var(--coral); }
+.about-quick { display:flex; flex-direction:column; gap:12px; }
+.about-item {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px 18px;
+  background:var(--white);
+  border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  transition:all .2s;
+}
+.about-item:hover { border-color:var(--coral); transform:translateX(4px); }
+.about-item-ico { font-size:1.3rem; flex-shrink:0; }
+.about-item-title { font-family:var(--font-d); font-size:.9rem; font-weight:700; color:var(--black); margin-bottom:1px; }
+.about-item-sub  { font-size:.8rem; color:var(--text-2); }
+.about-item a { color:var(--coral); }
+
+/* ═══ CTA SECTION ═══ */
+.cta-section {
+  background:linear-gradient(135deg, var(--coral) 0%, var(--orange) 60%, var(--amber) 100%);
+  padding:100px 5%;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.cta-section::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size:28px 28px;
+}
+.cta-eyebrow {
+  font-family:var(--font-d);
+  font-size:.8rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.7);
+  margin-bottom:16px;
+}
+.cta-title {
+  font-family:var(--font-d);
+  font-weight:800;
+  font-size:clamp(2rem, 4vw, 3.2rem);
+  letter-spacing:-.03em;
+  color:var(--white);
+  line-height:1.1;
+  margin-bottom:14px;
+  position:relative;
+}
+.cta-sub {
+  font-size:1.1rem;
+  color:rgba(255,255,255,.8);
+  margin-bottom:40px;
+  max-width:440px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.6;
+  position:relative;
+}
+.btn-cta {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--font-d);
+  font-size:1rem;
+  font-weight:700;
+  padding:16px 36px;
+  background:var(--white);
+  color:var(--black);
+  border-radius:var(--r-pill);
+  transition:all .25s;
+  position:relative;
+  box-shadow:0 4px 24px rgba(0,0,0,.15);
+}
+.btn-cta:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(0,0,0,.2); }
+.btn-cta svg { width:18px; height:18px; }
+
+/* ═══ FOOTER ═══ */
+footer {
+  background:var(--black);
+  padding:28px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+}
+footer p { font-family:var(--font-d); font-size:.82rem; color:rgba(255,255,255,.4); }
+footer a { color:rgba(255,255,255,.6); transition:color .2s; }
+footer a:hover { color:var(--white); }
+
+/* ═══ REVEAL ═══ */
+.rv { opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease; }
+.rv.on { opacity:1; transform:translateY(0); }
+.rv.delay-1 { transition-delay:.1s; }
+.rv.delay-2 { transition-delay:.2s; }
+.rv.delay-3 { transition-delay:.3s; }
+.rv.delay-4 { transition-delay:.4s; }
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:900px) {
+  .hero { grid-template-columns:1fr; }
+  .hero-right { height:320px; }
+  .sphere { width:260px; height:260px; }
+  .about-grid { grid-template-columns:1fr; }
+  .cert-grid { grid-template-columns:1fr; }
+  .cases-grid { grid-template-columns:1fr; }
+  .case-featured-body { grid-template-columns:1fr; }
+  .stat-item { padding:12px 20px; }
+}
+@media(max-width:600px) {
+  section { padding:72px 5%; }
+  .hero-name { font-size:3rem; }
+  .stats-bar { flex-direction:column; gap:20px; }
+  .stat-item { border-right:none; border-bottom:1px solid rgba(255,255,255,.12); width:100%; justify-content:center; }
+  .stat-item:last-child { border-bottom:none; }
+  .scale-stats { gap:20px; }
+}
 </style>
 </head>
 <body>
-<div class="grid-bg"></div>
 
 <!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-logo">ML<span>_</span></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#competences">Compétences</a></li>
+  <a href="#hero" class="nav-logo">ML<em>.</em></a>
+  <ul class="nav-links">
     <li><a href="#projets">Projets</a></li>
     <li><a href="#ressources">Ressources</a></li>
     <li><a href="#certifications">Certifications</a></li>
     <li><a href="#apropos">À propos</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Me contacter</a>
-  <button class="hamburger" id="menuBtn" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('active');">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="https://fr.linkedin.com/in/margot-larvor" target="_blank" rel="noopener noreferrer" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+    LinkedIn
+  </a>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-  <div class="hero-content">
-    <div class="hero-tag fu">SEO · No-code · IA · Référencement Web</div>
-    <h1 class="fu d1">Margot<span class="accent">Larvor</span></h1>
-    <p class="hero-sub fu d2">Chef de projet web spécialisée en <strong>SEO on-site</strong> et optimisation de contenus. 3 ans d'expérience en agence. En transition vers le <strong>Product Building No-code & IA</strong>. Mobilité confirmée en Bretagne.</p>
-    <div class="evolve-badge fu d2"><span class="spark">⚡</span>En formation · No-code (Airtable, n8n, Make) &amp; IA appliquée</div>
-    <div class="hero-stats fu d3">
-      <div class="hero-stat"><span class="hero-stat-num">84</span><span class="hero-stat-label">Dossiers<br>/mois</span></div>
-      <div class="hero-stat"><span class="hero-stat-num">3+</span><span class="hero-stat-label">Ans<br>agence</span></div>
-      <div class="hero-stat"><span class="hero-stat-num">945</span><span class="hero-stat-label">TOEIC<br>/990</span></div>
-      <div class="hero-stat"><span class="hero-stat-num">44</span><span class="hero-stat-label">pages<br>Guide SEO</span></div>
+  <div class="hero-left">
+    <div class="hero-badge">Open to work · Bretagne</div>
+    <h1 class="hero-name">
+      Margot<br><span class="line2">Larvor</span>
+    </h1>
+    <p class="hero-subtitle">Cheffe de projet web / Product Builder</p>
+    <div class="hero-pills">
+      <span class="hero-pill"><span class="dot"></span>Audit SEO</span>
+      <span class="hero-pill"><span class="dot"></span>No-code</span>
+      <span class="hero-pill"><span class="dot"></span>Site internet</span>
+      <span class="hero-pill"><span class="dot"></span>IA appliquée</span>
+      <span class="hero-pill"><span class="dot"></span>Product Building</span>
     </div>
-    <div class="btn-group fu d4">
-      <a href="#projets" class="btn-p">Voir mes projets</a>
-      <a href="#contact" class="btn-s">Me contacter</a>
+    <div class="hero-ctas">
+      <a href="#projets" class="btn-primary">Voir mes projets →</a>
+      <a href="https://fr.linkedin.com/in/margot-larvor" target="_blank" rel="noopener noreferrer" class="btn-ghost">Me contacter</a>
     </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="sphere"></div>
+    <div class="float-tag float-tag--1">Site internet</div>
+    <div class="float-tag float-tag--2">no-code</div>
+    <div class="float-tag float-tag--3">Audit SEO</div>
+    <div class="float-tag float-tag--4">IA</div>
+    <div class="float-tag float-tag--5">Product Builder</div>
+    <div class="float-tag float-tag--asterisk float-tag--a1">✳</div>
+    <div class="float-tag float-tag--asterisk float-tag--a2">✳</div>
   </div>
 </section>
 
-<!-- COMPÉTENCES -->
-<section id="competences" class="alt">
-  <div class="sh">
-    <div><div class="st">Compétences</div><h2>Stack &amp; expertise</h2></div>
-    <p class="sh-desc">Outils maîtrisés au quotidien en agence + compétences en cours d'acquisition.</p>
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div>
+      <div class="stat-num"><span>70</span></div>
+      <div class="stat-label">dossiers traités · mai 2026</div>
+    </div>
   </div>
-  <div class="g2">
-    <div class="sc s1 rv">
-      <div class="sc-ico">🔍</div>
-      <div class="sc-t">SEO &amp; Analyse</div>
-      <div class="sc-sub">Cœur de métier · 3 ans en agence</div>
-      <div class="tags">
-        <span class="tag hi">Audit SEO on-site</span><span class="tag hi">SEO sémantique</span><span class="tag hi">Maillage interne</span><span class="tag">GSC &amp; GA4</span><span class="tag">Screaming Frog</span><span class="tag">SEMrush</span><span class="tag">Ahrefs</span><span class="tag">ThotSEO</span><span class="tag">Intention recherche</span>
+  <div class="stat-item">
+    <div>
+      <div class="stat-num"><span>11</span></div>
+      <div class="stat-label">audits SEO · mai 2026</div>
+    </div>
+  </div>
+  <div class="stat-item">
+    <div>
+      <div class="stat-num"><span>66<span style="font-size:1.2rem">+</span></span></div>
+      <div class="stat-label">secteurs d'activité couverts</div>
+    </div>
+  </div>
+  <div class="stat-item">
+    <div>
+      <div class="stat-num"><span>3<span style="font-size:1.2rem">+</span></span></div>
+      <div class="stat-label">ans en agence marketing</div>
+    </div>
+  </div>
+</div>
+
+<!-- STACK -->
+<section id="competences" class="surface">
+  <div class="section-header rv">
+    <div>
+      <div class="section-eyebrow"><div class="line"></div><span>Compétences</span></div>
+      <h2 class="section-title">Stack & expertise</h2>
+    </div>
+    <p class="section-desc">Outils maîtrisés au quotidien en agence + compétences en cours d'acquisition.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card c1 rv delay-1">
+      <div class="skill-card-icon">🔍</div>
+      <div class="skill-card-title">SEO & Analyse</div>
+      <div class="skill-card-sub">Cœur de métier · 3 ans agence</div>
+      <div class="tag-cloud">
+        <span class="tag hi">Audit SEO on-site</span>
+        <span class="tag hi">SEO sémantique</span>
+        <span class="tag hi">Maillage interne</span>
+        <span class="tag">GSC & GA4</span>
+        <span class="tag">Screaming Frog</span>
+        <span class="tag">SEMrush</span>
+        <span class="tag">Ahrefs</span>
+        <span class="tag">ThotSEO</span>
+        <span class="tag">Intention recherche</span>
       </div>
     </div>
-    <div class="sc s2 rv">
-      <div class="sc-ico">⚡</div>
-      <div class="sc-t">Création Web</div>
-      <div class="sc-sub">Sites vitrine &amp; e-commerce</div>
-      <div class="tags">
-        <span class="tag hi">Duda</span><span class="tag hi">Ecwid</span><span class="tag">WordPress</span><span class="tag">Rédaction SEO</span><span class="tag">UX / Parcours</span><span class="tag">Arborescence</span><span class="tag">Contrôle qualité</span><span class="tag">Refonte UX/UI</span>
+    <div class="skill-card c2 rv delay-2">
+      <div class="skill-card-icon">⚡</div>
+      <div class="skill-card-title">Création Web</div>
+      <div class="skill-card-sub">Sites vitrine & e-commerce</div>
+      <div class="tag-cloud">
+        <span class="tag hi">Duda</span>
+        <span class="tag hi">Ecwid</span>
+        <span class="tag">WordPress</span>
+        <span class="tag">Rédaction SEO</span>
+        <span class="tag">UX / Parcours</span>
+        <span class="tag">Arborescence</span>
+        <span class="tag">Contrôle qualité</span>
+        <span class="tag">Refonte UX/UI</span>
       </div>
     </div>
-    <div class="sc s5 rv">
-      <div class="sc-ico">🤖</div>
-      <div class="sc-t">No-code &amp; IA <span class="badge-wip">En cours</span></div>
-      <div class="sc-sub">Product Building · Automatisation</div>
-      <div class="tags">
-        <span class="tag new">Airtable</span><span class="tag new">Notion</span><span class="tag new">n8n</span><span class="tag new">Make</span><span class="tag hi2">Claude / GPT</span><span class="tag hi2">IA appliquée</span>
+    <div class="skill-card c3 rv delay-3">
+      <div class="skill-card-icon">🤖</div>
+      <div class="skill-card-title">No-code & IA <span class="tag wip" style="font-size:.65rem;padding:2px 7px;margin-left:4px;">En cours</span></div>
+      <div class="skill-card-sub">Product Building · Automatisation</div>
+      <div class="tag-cloud">
+        <span class="tag hi2">Airtable</span>
+        <span class="tag hi2">Notion</span>
+        <span class="tag hi2">n8n</span>
+        <span class="tag hi2">Make</span>
+        <span class="tag">Claude / GPT</span>
+        <span class="tag">IA appliquée</span>
       </div>
     </div>
-    <div class="sc s3 rv">
-      <div class="sc-ico">🛠</div>
-      <div class="sc-t">Outils &amp; Gestion de projet</div>
-      <div class="sc-sub">Organisation &amp; suivi opérationnel</div>
-      <div class="tags">
-        <span class="tag hi">Pilotage BUILD &amp; RUN</span><span class="tag">Salesforce CRM</span><span class="tag">Cadrage client</span><span class="tag">Coordination</span><span class="tag">Recette</span><span class="tag">Reporting</span><span class="tag">Photoshop</span><span class="tag">Procreate</span>
+    <div class="skill-card c4 rv delay-4">
+      <div class="skill-card-icon">📋</div>
+      <div class="skill-card-title">Gestion de projet</div>
+      <div class="skill-card-sub">Organisation & suivi opérationnel</div>
+      <div class="tag-cloud">
+        <span class="tag hi">Pilotage BUILD & RUN</span>
+        <span class="tag">Salesforce CRM</span>
+        <span class="tag">Cadrage client</span>
+        <span class="tag">Coordination</span>
+        <span class="tag">Recette</span>
+        <span class="tag">Reporting</span>
       </div>
     </div>
   </div>
@@ -328,437 +1097,397 @@
 
 <!-- PROJETS -->
 <section id="projets">
-  <div class="sh">
-    <div><div class="st">Cas clients</div><h2>Réalisations clients</h2></div>
-    <p class="sh-desc">Noms &amp; URLs masqués — confidentialité contractuelle.</p>
+  <div class="section-header rv">
+    <div>
+      <div class="section-eyebrow"><div class="line"></div><span>Réalisations</span></div>
+      <h2 class="section-title">Cas clients</h2>
+    </div>
+    <p class="section-desc">Noms & URLs masqués — confidentialité contractuelle.</p>
   </div>
 
+  <!-- Scale -->
   <div class="scale-banner rv">
-    <div class="scale-banner-label">
-      <strong>Portefeuille RUN actif</strong><br>
-      Suivi opérationnel, audits, création et optimisation en flux continu.
+    <div class="scale-banner-text">
+      <strong>Portefeuille RUN actif · mai 2026</strong><br>
+      Briefs, contrôles qualité, audits SEO et dossiers en flux continu.
     </div>
-    <div class="scale-banner-stats">
-      <div class="scale-s"><span class="scale-s-num">84</span><span class="scale-s-label">dossiers jan. 2025</span></div>
-      <div class="scale-s"><span class="scale-s-num">59</span><span class="scale-s-label">dossiers fév. 2025</span></div>
-      <div class="scale-s"><span class="scale-s-num">4</span><span class="scale-s-label">audits SEO / mois</span></div>
-      <div class="scale-s"><span class="scale-s-num">66</span><span class="scale-s-label">secteurs couverts</span></div>
+    <div class="scale-stats">
+      <div>
+        <span class="scale-stat-num">8</span>
+        <span class="scale-stat-label">briefs clients</span>
+      </div>
+      <div>
+        <span class="scale-stat-num">30</span>
+        <span class="scale-stat-label">contrôles qualité</span>
+      </div>
+      <div>
+        <span class="scale-stat-num">11</span>
+        <span class="scale-stat-label">audits SEO (mai)<br><small style="font-size:.7rem;color:var(--text-3);">8 en juin (15+ pages)</small></span>
+      </div>
+      <div>
+        <span class="scale-stat-num">21</span>
+        <span class="scale-stat-label">dossiers traités</span>
+      </div>
     </div>
   </div>
 
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;align-items:center;">
-    <span style="font-size:11px;color:#4a6278;letter-spacing:1px;text-transform:uppercase;margin-right:4px;">Légende :</span>
-    <span class="csc-tag t-audit" style="font-size:11px;padding:3px 8px;border-radius:3px;border:1px solid;">Audit SEO</span>
-    <span class="csc-tag t-redac" style="font-size:11px;padding:3px 8px;border-radius:3px;border:1px solid;">Rédaction SEO</span>
-    <span class="csc-tag t-visuel" style="font-size:11px;padding:3px 8px;border-radius:3px;border:1px solid;">Amélioration visuelle</span>
-    <span class="csc-tag t-pages" style="font-size:11px;padding:3px 8px;border-radius:3px;border:1px solid;">Pages activités</span>
-    <span class="csc-tag t-local" style="font-size:11px;padding:3px 8px;border-radius:3px;border:1px solid;">Localité</span>
-    <span class="csc-tag t-lp" style="font-size:11px;padding:3px 8px;border-radius:3px;border:1px solid;">Landing page</span>
+  <!-- Cases grid -->
+  <div class="cases-grid">
+
+    <!-- Case 1 — Prestataire multi-métiers -->
+    <div class="case-card rv">
+      <div class="complexity"><div class="cdot on"></div><div class="cdot on"></div><div class="cdot on"></div></div>
+      <div class="case-card-header">
+        <div class="case-card-icon">🔧</div>
+        <div>
+          <div class="case-sector">Prestataire multi-métiers</div>
+          <div class="case-type">Dépannage d'urgence · PME · Île-de-France</div>
+        </div>
+      </div>
+      <div class="case-chips">
+        <span class="chip audit">Audit SEO</span>
+        <span class="chip redac">Rédaction SEO</span>
+        <span class="chip visuel">Amélioration visuelle</span>
+        <span class="chip pages">Pages activités</span>
+        <span class="chip local">Localité</span>
+        <span class="chip lp">Landing page</span>
+      </div>
+      <div class="case-divider"></div>
+      <div class="shadow-label sl-problem">Problème</div>
+      <p class="shadow-text">Site vieillissant, photos pixellisées, GMB non optimisée. Plus de la moitié des pages hors top 10, plusieurs requêtes métier absentes de la SERP.</p>
+      <div class="shadow-label sl-solution">Solution</div>
+      <p class="shadow-text">Audit complet + refonte visuelle. Réécriture des contenus par corps de métier. Restructuration de l'arborescence + landing page conversion + repositionnement sur Paris.</p>
+      <div class="shadow-label sl-impact">Impact</div>
+      <p class="shadow-text">Site repositionné sur l'ensemble des requêtes métier à Paris sur un marché très concurrentiel (dépannage d'urgence Île-de-France).</p>
+    </div>
+
+    <!-- Case 2 — Déménagement -->
+    <div class="case-card rv delay-1">
+      <div class="complexity"><div class="cdot on"></div><div class="cdot on"></div><div class="cdot on"></div></div>
+      <div class="case-card-header">
+        <div class="case-card-icon">🚚</div>
+        <div>
+          <div class="case-sector">Société de déménagement</div>
+          <div class="case-type">Déménagement professionnel · Sud de France</div>
+        </div>
+      </div>
+      <div class="case-chips">
+        <span class="chip audit">Audit SEO</span>
+        <span class="chip redac">Rédaction SEO</span>
+        <span class="chip pages">Pages activités</span>
+        <span class="chip local">Localité principale</span>
+        <span class="chip local">Localité secondaire</span>
+        <span class="chip lp">Landing page</span>
+      </div>
+      <div class="case-divider"></div>
+      <div class="shadow-label sl-problem">Problème</div>
+      <p class="shadow-text">Toutes les pages positionnées au-delà de la 10e place. Potentiel local inexploité sur les villes de la région. Aucune requête métier en première page.</p>
+      <div class="shadow-label sl-solution">Solution</div>
+      <p class="shadow-text">Refonte éditoriale complète. Création de landing pages par localité. Mise à jour des visuels, restructuration du maillage interne pour renforcer les pages prioritaires.</p>
+      <div class="shadow-label sl-impact">Impact</div>
+      <p class="shadow-text">12 mois après l'intervention, sans aucune modification ultérieure : <strong>position 1 à 7</strong> sur les requêtes cibles. Zéro budget SEA.</p>
+    </div>
+
+    <!-- Case 3 — Clôturiste -->
+    <div class="case-card rv delay-2">
+      <div class="complexity"><div class="cdot on"></div><div class="cdot on"></div><div class="cdot"></div></div>
+      <div class="case-card-header">
+        <div class="case-card-icon">🌿</div>
+        <div>
+          <div class="case-sector">Artisan clôturiste</div>
+          <div class="case-type">Aménagement extérieur · Sud-Ouest</div>
+        </div>
+      </div>
+      <div class="case-chips">
+        <span class="chip audit">Audit SEO</span>
+        <span class="chip redac">Rédaction SEO</span>
+        <span class="chip local">Changement de localité</span>
+      </div>
+      <div class="case-divider"></div>
+      <div class="shadow-label sl-problem">Problème</div>
+      <p class="shadow-text">Site quasi invisible. La localité principale ciblée était inadaptée : forte densité d'immeubles, peu de demande pour des clôtures. E-E-A-T faible, contenu creux.</p>
+      <div class="shadow-label sl-solution">Solution</div>
+      <p class="shadow-text">Audit + diagnostic de l'inadéquation géographique. Repositionnement sur une ville cohérente avec les chantiers déjà réalisés. Réécriture GEO-optimisée, maillage interne restructuré.</p>
+      <div class="shadow-label sl-impact">Impact</div>
+      <p class="shadow-text"><strong>1re–7e position</strong> sur les requêtes métier ciblées. <strong>1re position</strong> sur "clôturiste [ville]" face à une douzaine de concurrents locaux.</p>
+    </div>
+
+    <!-- Case 4 — Agencement -->
+    <div class="case-card rv delay-3">
+      <div class="complexity"><div class="cdot on"></div><div class="cdot on"></div><div class="cdot"></div></div>
+      <div class="case-card-header">
+        <div class="case-card-icon">🪵</div>
+        <div>
+          <div class="case-sector">Artisan en agencement intérieur</div>
+          <div class="case-type">Menuiserie sur mesure · Indépendant</div>
+        </div>
+      </div>
+      <div class="case-chips">
+        <span class="chip audit">Audit SEO</span>
+        <span class="chip redac">Rédaction SEO</span>
+        <span class="chip pages">Pages activités</span>
+        <span class="chip local">Localité principale</span>
+        <span class="chip local">Localité secondaire</span>
+      </div>
+      <div class="case-divider"></div>
+      <p class="case-note">Audit + optimisation sémantique complète pour un artisan en agencement. Création de pages prestations (dressing, bibliothèques, cuisine…), rédaction orientée local et extension de la zone de chalandise vers une ville secondaire.</p>
+    </div>
+
+  </div><!-- /cases-grid -->
+
+  <!-- FEATURED — Formation RENOBAT anonymisé -->
+  <div style="margin-top:20px;">
+  <div class="case-featured rv">
+    <div class="case-featured-head">
+      <div>
+        <div class="case-featured-badge">⚡ Projet de formation · Product Building No-code & IA</div>
+        <div class="case-featured-title">CRM Notion pour une PME du bâtiment</div>
+        <div class="case-featured-meta">Rénovation & construction · 12 collaborateurs · ~2,5 M€ de CA · Normandie & Île-de-France</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-self:flex-start;">
+        <span class="cfooter-tag" style="background:rgba(255,255,255,.18);color:white;border-color:rgba(255,255,255,.3);">Notion</span>
+        <span class="cfooter-tag" style="background:rgba(255,255,255,.18);color:white;border-color:rgba(255,255,255,.3);">Product Management</span>
+        <span class="cfooter-tag" style="background:rgba(255,255,255,.18);color:white;border-color:rgba(255,255,255,.3);">Data Modeling</span>
+      </div>
+    </div>
+    <div class="case-featured-body">
+      <div class="cfb-col">
+        <h4 class="problem">🔴 Contexte & problème</h4>
+        <p>La gestion reposait sur 6 fichiers Excel cloisonnés entre équipes commerciale et technique. Un incident déclencheur : des avenants demandés par un client n'ont pas été facturés, l'erreur n'étant détectée que 3 mois plus tard faute de traçabilité centralisée.</p>
+        <p style="margin-top:10px;">Enjeux : perte de leads non relancés, absence de visibilité en temps réel sur la rentabilité des chantiers, facturation tardive, collaboration difficile entre profils.</p>
+      </div>
+      <div class="cfb-col">
+        <h4 class="solution">🔵 Solution conçue</h4>
+        <p>Conception complète d'un CRM Notion avec <strong>5 bases interconnectées</strong> (Clients, Projets, Devis, Factures, Tâches) et un système de permissions différenciées selon les profils :</p>
+        <ul style="margin-top:8px;padding-left:16px;font-size:.85rem;color:var(--text-2);line-height:1.8;">
+          <li>Équipes terrain : adresse + tâches uniquement</li>
+          <li>Commerciaux : pipeline, devis, marges</li>
+          <li>Direction : tableau de bord financier complet</li>
+        </ul>
+      </div>
+      <div class="cfb-col">
+        <h4 class="impact">🟢 Livrables produits</h4>
+        <ul style="padding-left:16px;font-size:.85rem;color:var(--text-2);line-height:2;">
+          <li><strong>Note de cadrage v2.0</strong> — périmètre, contraintes, parties prenantes, questions ouvertes</li>
+          <li><strong>Schéma ERD v2.0</strong> — 5 entités, 8 relations documentées</li>
+          <li><strong>Architecture de permissions</strong> — accès différenciés par profil</li>
+          <li><strong>Identification des risques RGPD</strong> — données personnelles (contacts clients)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="case-featured-footer">
+      <div class="cfooter-block">
+        <h5>Stack technique</h5>
+        <div class="cfooter-tags">
+          <span class="cfooter-tag">Notion</span>
+          <span class="cfooter-tag">ERD</span>
+          <span class="cfooter-tag">Product Management</span>
+          <span class="cfooter-tag">Analyse métier</span>
+        </div>
+      </div>
+      <div class="cfooter-block">
+        <h5>Phase du projet</h5>
+        <p>Cadrage & modélisation des données — Uncode School 2026</p>
+      </div>
+      <div class="cfooter-block" style="text-align:right;">
+        <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;">
+          <div class="cdot on" style="width:9px;height:9px;"></div>
+          <span style="font-family:var(--font-d);font-size:.78rem;font-weight:700;color:var(--coral);">Projet actif</span>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 
-  <div class="csg">
-
-    <!-- CAS 1 — Prestataire multi-métiers (SHADOW PROJECT) -->
-    <div class="csc rv">
-      <div class="csc-complexity"><div class="csc-dot on"></div><div class="csc-dot on"></div><div class="csc-dot on"></div></div>
-      <div class="csc-header">
-        <div class="csc-ico">🔧</div>
-        <div>
-          <div class="csc-sector">Prestataire multi-métiers</div>
-          <div class="csc-type">Dépannage d'urgence · PME · Île-de-France</div>
-        </div>
-      </div>
-      <div class="csc-tags">
-        <span class="csc-tag t-audit">Audit SEO</span>
-        <span class="csc-tag t-redac">Rédaction SEO</span>
-        <span class="csc-tag t-visuel">Amélioration visuelle</span>
-        <span class="csc-tag t-pages">Pages activités</span>
-        <span class="csc-tag t-local">Localité principale</span>
-        <span class="csc-tag t-lp">Landing page</span>
-      </div>
-      <div class="csc-divider"></div>
-      <div class="shadow-block">
-        <div class="shadow-label shadow-label--problem">Problème</div>
-        <p class="shadow-text">Client insatisfait de son ROI : site vieillissant, design dépassé, photos pixellisées, GMB non optimisée. Plus de la moitié des pages positionnées au-delà de la 10e place, plusieurs requêtes métier absentes de la SERP. Contenu trop creux, arborescence perfectible.</p>
-      </div>
-      <div class="shadow-block">
-        <div class="shadow-label shadow-label--solution">Solution</div>
-        <p class="shadow-text">Audit complet technique + sémantique. Refonte visuelle avec animations et intégration d'avis clients. Réécriture des contenus par corps de métier (serrurerie, plomberie, électricité, menuiserie). Restructuration de l'arborescence, création de nouvelles pages activités et d'une landing page conversion, repositionnement géographique sur Paris.</p>
-      </div>
-      <div class="shadow-block">
-        <div class="shadow-label shadow-label--impact">Impact</div>
-        <p class="shadow-text">Site repositionné sur l'ensemble des requêtes métier ciblées à Paris. Amélioration globale de la visibilité sur un marché très concurrentiel (dépannage d'urgence Île-de-France).</p>
-      </div>
-    </div>
-
-    <!-- CAS 2 — Travaux publics -->
-    <div class="csc rv">
-      <div class="csc-complexity"><div class="csc-dot on"></div><div class="csc-dot on"></div><div class="csc-dot"></div></div>
-      <div class="csc-header">
-        <div class="csc-ico">🏗️</div>
-        <div>
-          <div class="csc-sector">Entreprise de travaux publics</div>
-          <div class="csc-type">BTP · PME régionale · Auvergne</div>
-        </div>
-      </div>
-      <div class="csc-tags">
-        <span class="csc-tag t-audit">Audit SEO</span>
-        <span class="csc-tag t-redac">Rédaction SEO</span>
-        <span class="csc-tag t-visuel">Amélioration visuelle</span>
-        <span class="csc-tag t-pages">Pages activités</span>
-      </div>
-      <div class="csc-divider"></div>
-      <div class="csc-note">Audit complet + refonte éditoriale sur un site BTP peu visible localement. Création de pages par type de prestation, amélioration de la charte graphique et restructuration des contenus existants selon les intentions de recherche.</div>
-    </div>
-
-    <!-- CAS 3 — Déménagement (SHADOW PROJECT) -->
-    <div class="csc rv">
-      <div class="csc-complexity"><div class="csc-dot on"></div><div class="csc-dot on"></div><div class="csc-dot on"></div></div>
-      <div class="csc-header">
-        <div class="csc-ico">🚚</div>
-        <div>
-          <div class="csc-sector">Société de déménagement</div>
-          <div class="csc-type">Déménagement professionnel · Gap &amp; région</div>
-        </div>
-      </div>
-      <div class="csc-tags">
-        <span class="csc-tag t-audit">Audit SEO</span>
-        <span class="csc-tag t-redac">Rédaction SEO</span>
-        <span class="csc-tag t-pages">Pages activités</span>
-        <span class="csc-tag t-local">Localité principale</span>
-        <span class="csc-tag t-local">Localité secondaire</span>
-        <span class="csc-tag t-lp">Landing page</span>
-      </div>
-      <div class="csc-divider"></div>
-      <div class="shadow-block">
-        <div class="shadow-label shadow-label--problem">Problème</div>
-        <p class="shadow-text">Site présent mais invisible : toutes les pages positionnées au-delà de la 10e place, aucune requête métier en première page. Potentiel local inexploité sur les villes de la région.</p>
-      </div>
-      <div class="shadow-block">
-        <div class="shadow-label shadow-label--solution">Solution</div>
-        <p class="shadow-text">Audit de l'existant puis refonte éditoriale complète. Création de landing pages par localité pour capter les recherches de proximité. Mise à jour des visuels, restructuration du maillage interne pour renforcer les pages prioritaires.</p>
-      </div>
-      <div class="shadow-block">
-        <div class="shadow-label shadow-label--impact">Impact</div>
-        <p class="shadow-text">12 mois après l'intervention, sans aucune modification ultérieure : positionnement entre la 1re et la 7e place sur les requêtes cibles. Résultat obtenu uniquement par optimisation on-site — zéro budget SEA.</p>
-      </div>
-    </div>
-
-    <!-- CAS 4 — Agencement intérieur -->
-    <div class="csc rv">
-      <div class="csc-complexity"><div class="csc-dot on"></div><div class="csc-dot on"></div><div class="csc-dot"></div></div>
-      <div class="csc-header">
-        <div class="csc-ico">🪵</div>
-        <div>
-          <div class="csc-sector">Artisan en agencement intérieur</div>
-          <div class="csc-type">Menuiserie sur mesure · Indépendant</div>
-        </div>
-      </div>
-      <div class="csc-tags">
-        <span class="csc-tag t-audit">Audit SEO</span>
-        <span class="csc-tag t-redac">Rédaction SEO</span>
-        <span class="csc-tag t-pages">Pages activités</span>
-        <span class="csc-tag t-local">Localité principale</span>
-        <span class="csc-tag t-local">Localité secondaire</span>
-      </div>
-      <div class="csc-divider"></div>
-      <div class="csc-note">Audit + optimisation sémantique complète pour un artisan en agencement. Création de pages prestations (dressing, bibliothèques, cuisine…), rédaction orientée local et extension de la zone de chalandise vers une ville secondaire.</div>
-    </div>
-
-    <!-- CAS 5 — Laverie -->
-    <div class="csc rv">
-      <div class="csc-complexity"><div class="csc-dot on"></div><div class="csc-dot"></div><div class="csc-dot"></div></div>
-      <div class="csc-header">
-        <div class="csc-ico">🧺</div>
-        <div>
-          <div class="csc-sector">Réseau de laveries automatiques</div>
-          <div class="csc-type">Commerce de proximité · Région lyonnaise</div>
-        </div>
-      </div>
-      <div class="csc-tags">
-        <span class="csc-tag t-redac">Rédaction SEO</span>
-        <span class="csc-tag t-pages">Pages activités</span>
-        <span class="csc-tag t-visuel">Amélioration visuelle</span>
-      </div>
-      <div class="csc-divider"></div>
-      <div class="csc-note">Optimisation éditoriale et visuelle pour un réseau de laveries. Création de pages par type de service (lavage, séchage, pressing), refonte des textes existants et amélioration de la cohérence graphique du site.</div>
-    </div>
-
-    <!-- CAS 6 — Antiquités -->
-    <div class="csc rv">
-      <div class="csc-complexity"><div class="csc-dot on"></div><div class="csc-dot on"></div><div class="csc-dot"></div></div>
-      <div class="csc-header">
-        <div class="csc-ico">🏺</div>
-        <div>
-          <div class="csc-sector">Antiquaire &amp; Brocanteur</div>
-          <div class="csc-type">Commerce de seconde main · Île-de-France</div>
-        </div>
-      </div>
-      <div class="csc-tags">
-        <span class="csc-tag t-audit">Audit SEO</span>
-        <span class="csc-tag t-redac">Rédaction SEO</span>
-        <span class="csc-tag t-pages">Pages activités</span>
-      </div>
-      <div class="csc-divider"></div>
-      <div class="csc-note">Audit SEO d'un site antiquités à double activité (vente et achat). Recommandations priorisées, réécriture des contenus pour cibler les requêtes d'intention d'achat et de vente, création de pages par catégorie de mobilier.</div>
-    </div>
-
-    <!-- CAS 7 — Clôturiste (SHADOW PROJECT) -->
-    <div class="csc rv">
-      <div class="csc-complexity"><div class="csc-dot on"></div><div class="csc-dot on"></div><div class="csc-dot"></div></div>
-      <div class="csc-header">
-        <div class="csc-ico">🌿</div>
-        <div>
-          <div class="csc-sector">Artisan clôturiste</div>
-          <div class="csc-type">Aménagement extérieur · Gironde, Sud-Ouest</div>
-        </div>
-      </div>
-      <div class="csc-tags">
-        <span class="csc-tag t-audit">Audit SEO</span>
-        <span class="csc-tag t-redac">Rédaction SEO</span>
-        <span class="csc-tag t-local">Changement localité</span>
-      </div>
-      <div class="csc-divider"></div>
-      <div class="shadow-block">
-        <div class="shadow-label shadow-label--problem">Problème</div>
-        <p class="shadow-text">Site quasi invisible : toutes les pages hors top 10. La localité principale ciblée était inadaptée à l'activité (ville à forte densité d'immeubles, peu de demande pour des clôtures). Contenu trop creux, peu de réponses concrètes, E-E-A-T faible.</p>
-      </div>
-      <div class="shadow-block">
-        <div class="shadow-label shadow-label--solution">Solution</div>
-        <p class="shadow-text">Audit + diagnostic de l'inadéquation géographique. Changement de la localité principale vers Langon — ville cohérente avec les chantiers déjà réalisés. Réécriture complète des contenus (expert, concret, GEO-optimisé). Restructuration du maillage interne.</p>
-      </div>
-      <div class="shadow-block">
-        <div class="shadow-label shadow-label--impact">Impact</div>
-        <p class="shadow-text">Actuellement en 1re–7e position SERP sur les requêtes métier à Langon — sans aucune modification depuis la mission. Première position sur "clôturiste Langon" face à une douzaine de concurrents locaux.</p>
-      </div>
-    </div>
-
-  </div>
 </section>
 
 <!-- RESSOURCES -->
-<section id="ressources" class="alt">
-  <div class="sh">
-    <div><div class="st">Ressources</div><h2>Ressources créées</h2></div>
-    <p class="sh-desc">Outils internes pour structurer et partager les bonnes pratiques.</p>
+<section id="ressources" class="surface">
+  <div class="section-header rv">
+    <div>
+      <div class="section-eyebrow"><div class="line"></div><span>Ressources</span></div>
+      <h2 class="section-title">Ressources créées</h2>
+    </div>
+    <p class="section-desc">Guides de référence produits pour structurer et partager les bonnes pratiques.</p>
   </div>
-  <div class="rg">
-    <div class="rc rv"><div class="re">📖</div><div class="rt">Guide SEO Complet 2026</div><div class="rs">44 pages · 22 modules</div><p class="rd">Guide de référence SEO : signaux d'usage, GEO, IA et workflows complets.</p><ul class="rf"><li>Fondamentaux + architecture Google (NavBoost, Twiddlers)</li><li>SEO on-page, technique, mots-clés, netlinking</li><li>Modules GEO &amp; IA (AI Overviews)</li><li>Top 20 erreurs, templates pratiques</li><li>Cas pratiques Local / E-commerce / B2B</li></ul></div>
-    <div class="rc rv"><div class="re">🛍</div><div class="rt">Guide Ecwid sur Duda</div><div class="rs">17 sections · Version 2.0</div><p class="rd">Gestion de boutiques e-commerce Ecwid intégrées dans Duda, du setup au succès.</p><ul class="rf"><li>Setup, catalogue produits, options &amp; variantes</li><li>Commandes, livraison, Click &amp; Collect</li><li>Coupons, promotions, analytics</li><li>10 cas d'usage concrets illustrés</li><li>Checklists, dépannage, glossaire</li></ul></div>
-    <div class="rc rv"><div class="re">📊</div><div class="rt">Guide Outils Google SEO</div><div class="rs">Formation professionnelle</div><p class="rd">Les 6 outils Google gratuits pour le référencement : Search Console, KW Planner, Trends…</p><ul class="rf"><li>Workflow complet en 6 étapes illustré</li><li>Priorisation positions × impressions</li><li>8 erreurs à éviter + checklist hebdo</li><li>Avant/après réel : +462% trafic</li></ul></div>
-    <div class="rc rv" style="position:relative;">
-      <div class="re">⚡</div>
-      <div class="rt">Guide Notion — Référence complète</div>
-      <div class="rs">Bases, workflows, automatisations</div>
-      <p class="rd">Guide de référence Notion créé en auto-formation : blocs, bases de données, formules, automatisations et cas d'usage concrets.</p>
-      <ul class="rf">
-        <li>Navigation, blocs essentiels, bases de données</li>
-        <li>Vues, filtres, formules et relations</li>
-        <li>Automatisations et workflows no-code</li>
-        <li>Cas pratiques : suivi de projets, CRM léger, dashboard</li>
-      </ul>
-      <div style="margin-top:14px;">
-        <a href="notion-guide-reference.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.5px;color:#00e5c8 !important;text-decoration:none;border:1px solid rgba(0,229,200,.3);border-radius:4px;padding:7px 14px;transition:all .2s;" onmouseover="this.style.background='rgba(0,229,200,.08)'" onmouseout="this.style.background='transparent'">Consulter le guide →</a>
-      </div>
+  <div class="resources-grid">
+    <div class="res-card rv">
+      <div class="res-icon">📖</div>
+      <div class="res-title">Guide SEO Complet 2026</div>
+      <div class="res-sub">44 pages · 22 modules</div>
+      <p class="res-desc">Guide de référence SEO : fondamentaux, signaux d'usage (NavBoost, Twiddlers), GEO, IA et workflows complets. Templates pratiques, cas Local / E-commerce / B2B.</p>
+      <a href="./Guide_SEO_2026.html" target="_blank" class="res-link">Consulter →</a>
+    </div>
+    <div class="res-card rv delay-1">
+      <div class="res-icon">🛍</div>
+      <div class="res-title">Guide Ecwid sur Duda</div>
+      <div class="res-sub">17 sections · Version 2.0</div>
+      <p class="res-desc">Gestion de boutiques e-commerce Ecwid intégrées dans Duda : du setup au succès. Cas d'usage, checklists, dépannage, best practices.</p>
+      <a href="./Guide_Ecwid_Duda_2026.html" target="_blank" class="res-link">Consulter →</a>
+    </div>
+    <div class="res-card rv delay-2">
+      <div class="res-icon">🌐</div>
+      <div class="res-title">Guide GEO 2026</div>
+      <div class="res-sub">Generative Engine Optimization</div>
+      <p class="res-desc">Optimisation pour les moteurs IA et les réponses générées : structurer son contenu pour être cité dans les AI Overviews et les answer engines.</p>
+      <a href="./Guide_GEO_2026.html" target="_blank" class="res-link">Consulter →</a>
+    </div>
+    <div class="res-card rv delay-3">
+      <div class="res-icon">⚡</div>
+      <div class="res-title">Guide Notion — Référence</div>
+      <div class="res-sub">Bases, workflows, automatisations</div>
+      <p class="res-desc">Guide complet Notion : blocs, bases de données, formules, relations, automatisations et cas d'usage concrets (CRM léger, suivi projets, dashboard).</p>
+      <a href="./notion-guide-reference.html" target="_blank" class="res-link">Consulter →</a>
     </div>
   </div>
 </section>
 
 <!-- CERTIFICATIONS -->
 <section id="certifications">
-  <div class="sh">
-    <div><div class="st">Certifications</div><h2>Badges &amp; certifications</h2></div>
-    <p class="sh-desc">Certifications obtenues sur outils no-code et IA.</p>
+  <div class="section-header rv">
+    <div>
+      <div class="section-eyebrow"><div class="line"></div><span>Certifications</span></div>
+      <h2 class="section-title">Badges & certifications</h2>
+    </div>
+    <p class="section-desc">Certifications obtenues sur outils no-code et collaboration.</p>
   </div>
-  <div class="cert-g">
-    <!-- Notion Essentials -->
-    <div class="cert-c ce rv">
-      <div class="cert-badge">
-        <img src="data:image/png;base64,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gKo2vzOTVGxOCuYqqRchSIlSQUX1qklX4nxgkKz6ipzz9PT07777jjGWl5fXokULIlImFaUaz5s3r2XLlkrjAQCHw+E3qShbo7/DXr16KUUEABITE9u0abNnz54zZ84EflQVke432fhV2sBVpILk/b5yVVhfbeIUULfIHwDqf1//lcD1VrZs2TZt2syePXv16tXPP//8ypUrEfG2226Lj48PHP9vwf9E9fp03aPzJ6G+sZrHrKwsj8cTaGwjIsVavv7664yMDJWw5681r+u6y+VSJyHk5+eXKlUqPDzc5XKdOHECA86a+OmnnzweT6VKlXbv3j19+nRN0wYOHDh06NDIyMjw8PBGjRqdOXNGEUdkZCQiZmRk5ObmlipVyjRNXddPnTrlz+kBgLi4OERs1KjRt99+63K5FPkG+usDXfN/+Pr+Np07d541a9b+/ftXrFihOG6XLl3gyijMnw6Rn58fOHV/eOO/iCA1nlNxFWQo/t5FRUWBdkq/gw4RlyxZgoiRkZEbN248efLksWPHDh8+fOLECZW7fe7cufXr1yckJFSrVk1R8IkTJ2w2m6Zp69evb9SoUZMmTbZt23b27FlVS+jll18uU6ZMeHj4mTNnfv75Z/+zlFBomuaUKVMQUY1twoQJFJBOdPvttxPRDz/8sGfPHqfTqQ5zePvtt/v16zdx4kQIIMpA/BaB+vf35s2blyxZMisra+zYsZmZmUlJSSru+Erc7lTsKXW5XP6J/cdyfP83BClRKvgtOAoXrW8lLaWkpChdoXHjxjVq1AgLC4uOjo6LiwsJCbnvvvtUnqtSg4YPH05Eqampbdq0ee2111544YVevXqZphkVFXXrrbeWKlVKCJGTk/PII49s2bJl4cKFrVq1ysrK8ic23H777TfeeCMRTZkypUuXLmPHjm3ZsuXq1atDQ0P9Rcx69epVokSJ3Nzcu+66a8yYMR9//PEjjzwyfPjwDz/88ODBg/4xBxITFp98EyiZBF7xer1RUVFt2rQhos2bNyNiu3btrrw8lb8NBmQalStXLiIi4rIrJCjwNypRfwJKp+7WrRsUG88vrZChbC6vv/66epGPP/5YFh/65D9apm7dugBgGMaRI0eIaPLkySpBwo+EhISVK1eqG5Wy70ejRo3q1asHAM2aNVM+mx07digjkQIivv3222p4n3/+uRrVunXrlAsn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" alt="Notion Academy Essentials badge">
+  <div class="cert-grid">
+    <div class="cert-card ce rv">
+      <div class="cert-badge-wrap">
+        <img src="./Notion_Academy_essentials.png" alt="Notion Academy Essentials badge" onerror="this.parentNode.innerHTML='<div style=\'font-size:2rem\'>🍎</div>'">
       </div>
       <div class="cert-issuer">Notion Academy</div>
       <div class="cert-name">Essentials</div>
-      <span class="cert-tag">✓ Certifié</span>
+      <span class="cert-pill">✓ Certifié</span>
     </div>
-
-    <!-- Notion Workflows -->
-    <div class="cert-c cw rv">
-      <div class="cert-badge">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAADcCAIAAACUOFjWAABz20lEQVR4nO19d7wVxfX+OVt2733pvfcivSMqKoINRRQLdrHH3ksSY4yJGhMTYzSJNRqNiTGxxx57R1BRiiBIlSK99/b2O+f8/ji7d+8WpZcLns8fdGd3dmZnZ/c955kzZwillMBqEBEAuFJK/8EYY4yx37oVAACyohEHcQiZOETKQ8g6HCLlIWQdxG/dgL0AIgKA1jr9T/OvWY9mrknNMSIiYuZ5U94UCA5pXJtZxvwZ/Jp5u1o1BwVqXddaB2u1zHpq1WkOlFLBLTKrMjUQUdDs9INa9aR3SK1eylymxU66+Zth7oIOEWmtzdu1c4+ISimtNeecc0SWUqYPCss+ACBNTM/cVhZe3FMDJMlQWgb13/5GaG2YR0gK2gJGX5TZ7vTPagCqBHQqAUAfY1uXFBzLAEBm2blSmJe8q8iRijkAIABGhgJnJFxjBPZQ19UEkJDPg1DRyMAGzSgDgAkJFYCNi0AUG9QiSghpAiABCKBApIBCL/TIJaXTjAtLBQLUckYBOBlH+5l5Ci4IkqkFKNEJFxNiC4IM0B4lxsAAFGQMSfIzEYiqCaIBgDQJQm2BFugDsj+bFIAp7DGRjIABDISJEEFmIbBQMIYcFiBGJBGEuS8IwJsWmrqRlNxgXS0T38JO0bU8C5CkAtROJSvE/C+XFr4U8O2JJjsICvQS3pDQMFJxCEGAoGlJIEJHcWkLVIRoV+/fkzKTlBWIiRiJijMuUV8lLTExDFUADHw94jFKJkCrGXKJWmTnfaTwSSXMsBSKigFmOGADlLKJJaCZ5KXzJBJ1Sm5CpJZoA7SWaDCBBYeNEJAKLdq3UBKJ8jcHACJqRG8BFmZaUHK0AyEhJKAkkgBQpIqFZJlBQEV5zHVTigklDKlRgFAEEQ4GICAM1KABBKSSokSR9G4goBh/lV3kkakZJCRiIMqOW3oRVdBJC4b7f0mCW1nE2WNlHRJkDnABZyQNBkFAAtpSrqmhCWBD8ERe7t79qbfWwLAnL17MDRSlLj5FLAoHAJAqCLMNAfygCygq4UGDgBEGiyCQMWQRRBUCYmqfaFGMVWKTGJBfGRJMq3MwuJe5oIJJNBKAhMJE9DZb2rOqKSkGAiMhJPCnPQiQYIlkYnbCYfE0BVjZ3sC6RrA6cAh7Mf0uQtIKQABKCQDfJMPAiQQiJNBGQYDnAJpomkz/MUBlNBAsqRkSTSsE5qHiGxhiRAaJCIJeJGtbD1jJiPMJEkJJMhFWOEPm/qADnRAh5ZCQYkAoJMD1RuKQEJBBSkYXCZ0RJBFmPEP3v2pkPXdTbXhNaH8gFRQB5oQwUAJ7Fcc6cDk5bwKQnFo8LbMYrJbhwJQHmQiQVsH5FkZnIiAkOIAAVNkA0R7eIkQREkmFcW7h3FGjnBRKiJwCJbMBnVvEh4oWk2cCdZWiCUCzCIjQJbOkD+NysBDMiRaIy6h5fMH0/gS5WN0Ov2RKEGkJFjZGqCBJi5nLO0h26BIIACYRUkG+ZxIABgAAAACJAAAPCMgFc9/HqAPgCJa0AAAAASUVORK5CYII=" alt="Notion Academy Workflows badge">
+    <div class="cert-card cw rv delay-1">
+      <div class="cert-badge-wrap">
+        <img src="./Notion_Academy_workflow.png" alt="Notion Academy Workflows badge" onerror="this.parentNode.innerHTML='<div style=\'font-size:2rem\'>🔵</div>'">
       </div>
       <div class="cert-issuer">Notion Academy</div>
       <div class="cert-name">Workflows</div>
-      <span class="cert-tag">✓ Certifié</span>
+      <span class="cert-pill">✓ Certifié</span>
     </div>
-
-    <!-- Notion Advanced -->
-    <div class="cert-c ca rv">
-      <div class="cert-badge">
-        <img src="data:image/png;base64,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gKo2vzOTVGxOCuYqqRchSIlSQUX1qklX4nxgkKz6ipzz9PT07777jjGWl5fXokULIlImFaUaz5s3r2XLlkrjAQCHw+E3qShbo7/DXr16KUUEABITE9u0abNnz54zZ84EflQVke432fhV2sBVpILk/b5yVVhfbeIUULfIHwDqf1//lcD1VrZs2TZt2syePXv16tXPP//8ypUrEfG2226Lj48PHP9vwf9E9fp03aPzJ6G+sZrHrKwsj8cTaGwjIsVavv7664yMDJWw5681r+u6y+VSJyHk5+eXKlUqPDzc5XKdOHECA86a+OmnnzweT6VKlXbv3j19+nRN0wYOHDh06NDIyMjw8PBGjRqdOXNGEUdkZCQiZmRk5ObmlipVyjRNXddPnTrlz+kBgLi4OERs1KjRt99+63K5FPkG+usDXfN/+Pr+Np07d541a9b+/ftXrFihOG6XLl3gyijMnw6Rn58fOHV/eOO/iCA1nlNxFWQo/t5FRUWBdkq/gw4RlyxZgoiRkZEbN248efLksWPHDh8+fOLECZW7fe7cufXr1yckJFSrVk1R8IkTJ2w2m6Zp69evb9SoUZMmTbZt23b27FlVS+jll18uU6ZMeHj4mTNnfv75Z/+zlFBomuaUKVMQUY1twoQJFJBOdPvttxPRDz/8sGfPHqfTqQ5zePvtt/v16zdx4kQIIMpA/BaB+vf35s2blyxZMisra+zYsZmZmUlJSSru+Erc7lTsKXW5XP6J/cdyfP83BClRKvgtOAoXrW8lLaWkpChdoXHjxjVq1AgLC4uOjo6LiwsJCbnvvvtUnqtSg4YPH05Eqampbdq0ee2111544YVevXqZphkVFXXrrbeWKlVKCJGTk/PII49s2bJl4cKFrVq1ysrK8ic23H777TfeeCMRTZkypUuXLmPHjm3ZsuXq1atDQ0P9Rcx69epVokSJ3Nzcu+66a8yYMR9//PEjjzwyfPjwDz/88ODBg/4xBxITFp98EyiZBF7xer1RUVFt2rQhos2bNyNiu3btrrw8lb8NBmQalStXLiIi4rIrJCjwNypRfwJKp+7WrRsUG88vrZChbC6vv/66epGPP/5YFh/65D9apm7dugBgGMaRI0eIaPLkySpBwo+EhISVK1eqG5Wy70ejRo3q1asHAM2aNVM+mx07digjkQIivv3222p4n3/+uRrVunXrlAsn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" alt="Notion Academy Advanced badge">
+    <div class="cert-card ca rv delay-2">
+      <div class="cert-badge-wrap">
+        <img src="./Notion_Academy_advanced.png" alt="Notion Academy Advanced badge" onerror="this.parentNode.innerHTML='<div style=\'font-size:2rem\'>🔨</div>'">
       </div>
       <div class="cert-issuer">Notion Academy</div>
       <div class="cert-name">Advanced</div>
-      <span class="cert-tag">✓ Certifié</span>
+      <span class="cert-pill">✓ Certifié</span>
     </div>
   </div>
 </section>
 
 <!-- À PROPOS -->
-<section id="apropos">
-  <div class="sh"><div><div class="st">À propos</div><h2>Qui suis-je ?</h2></div></div>
-  <div class="ag">
-    <div class="at rv">
-      <p>Chef de projet web en agence depuis 2022, je travaille sur des projets web clients au quotidien : création de sites, refonte, audits SEO, optimisation de contenus et suivi de performance.</p>
-      <p>Ma valeur ajoutée, c'est de <span class="hl">comprendre ce que cherche le client</span> (et ce que cherche Google), puis de traduire ça en structure, contenu et technique qui fonctionnent vraiment.</p>
-      <p>Je me forme actuellement au <span class="hl2">No-code et à l'IA appliquée</span> — Airtable, Notion, n8n, Make — pour construire des automatisations et des produits digitaux sans code. Une évolution naturelle vers le Product Building.</p>
-      <p>Basée à Angoulême. <strong>Mobilité confirmée en Bretagne.</strong></p>
-    </div>
-    <div class="aq rv">
-      <div class="ai"><div class="ai-ico">🏢</div><div class="ai-t"><strong>Agence Marketing Digital</strong><span>Chef de projet web · CDI · Depuis août 2022</span></div></div>
-      <div class="ai"><div class="ai-ico">🤖</div><div class="ai-t"><strong>En formation No-code &amp; IA</strong><span>Airtable, n8n, Make, Notion · Product Building</span></div></div>
-      <div class="ai"><div class="ai-ico">🎓</div><div class="ai-t"><strong>Formation Marketing &amp; Communication</strong><span>École Internationale Tunon, Nantes</span></div></div>
-      <div class="ai"><div class="ai-ico">🌍</div><div class="ai-t"><strong>Anglais bilingue · TOEIC 945/990</strong><span>Lecture, écriture, oral professionnel</span></div></div>
-      <div class="ai"><div class="ai-ico">📍</div><div class="ai-t"><strong>Angoulême → Bretagne</strong><span>Permis B · Mobilité confirmée</span></div></div>
-      <div class="ai"><div class="ai-ico">🔗</div><div class="ai-t"><strong><a href="https://fr.linkedin.com/in/margot-larvor" target="_blank" rel="noopener noreferrer" style="color:#00e5c8 !important;text-decoration:none;">LinkedIn — Margot Larvor</a></strong><span>#OpenToWork · Disponible en Bretagne</span></div></div>
+<section id="apropos" class="surface">
+  <div class="section-header rv">
+    <div>
+      <div class="section-eyebrow"><div class="line"></div><span>À propos</span></div>
+      <h2 class="section-title">Qui suis-je ?</h2>
     </div>
   </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="alt">
-  <div class="sh"><div><div class="st">Contact</div><h2>Travaillons ensemble</h2></div></div>
-  <div class="cw">
-    <div class="cb rv">
-      <h3>Un projet ? Un poste ?</h3>
-      <p>Ouverte à de nouvelles opportunités en SEO, No-code et IA. Remplissez le formulaire ci-dessous ou retrouvez-moi sur LinkedIn.</p>
-      <form id="contactForm" novalidate>
-        <input type="hidden" name="access_key" value="a480da27-d54b-4993-b7b7-a7a6da6f7e3d">
-        <input type="hidden" name="subject" value="Contact depuis portfolio — Margot Larvor">
-        <input type="hidden" name="from_name" value="Portfolio Margot Larvor">
-        <input type="hidden" name="redirect" value="false">
-        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fname">Prénom <span class="req">*</span></label>
-            <input type="text" id="fname" name="first_name" placeholder="Votre prénom" required autocomplete="given-name">
-          </div>
-          <div class="form-group">
-            <label for="lname">Nom <span class="req">*</span></label>
-            <input type="text" id="lname" name="last_name" placeholder="Votre nom" required autocomplete="family-name">
-          </div>
+  <div class="about-grid">
+    <div class="about-text rv">
+      <p>Cheffe de projet web en agence depuis 2022, je pilote des projets web clients au quotidien : création de sites, refonte, audits SEO complets, optimisation de contenus et suivi de performance.</p>
+      <p>Ma valeur ajoutée : <span class="hl">comprendre ce que cherche le client</span> (et ce que cherche Google), puis le traduire en structure, contenu et technique qui fonctionnent vraiment. Je ne sépare pas le SEO du web.</p>
+      <p>En parallèle, je me forme au <strong>Product Building No-code & IA</strong> — Airtable, Notion, n8n, Make — pour concevoir des solutions digitales concrètes sans code. Une évolution naturelle vers la conception de produits.</p>
+      <p>Basée à Angoulême. <strong>Mobilité confirmée en Bretagne.</strong></p>
+    </div>
+    <div class="about-quick rv delay-1">
+      <div class="about-item">
+        <div class="about-item-ico">🏢</div>
+        <div>
+          <div class="about-item-title">SoLocal Marketing Services</div>
+          <div class="about-item-sub">Cheffe de projet web · CDI · Depuis août 2022</div>
         </div>
-        <div class="form-group">
-          <label for="email">Email <span class="req">*</span></label>
-          <input type="email" id="email" name="email" placeholder="votre@email.com" required autocomplete="email">
+      </div>
+      <div class="about-item">
+        <div class="about-item-ico">🤖</div>
+        <div>
+          <div class="about-item-title">En formation No-code & IA</div>
+          <div class="about-item-sub">Airtable, n8n, Make, Notion · Product Building</div>
         </div>
-        <div class="form-group">
-          <label for="sujet">Sujet <span class="req">*</span></label>
-          <input type="text" id="sujet" name="sujet" placeholder="Ex : Opportunité poste SEO, question projet…" required>
+      </div>
+      <div class="about-item">
+        <div class="about-item-ico">🎓</div>
+        <div>
+          <div class="about-item-title">Formation Marketing & Communication</div>
+          <div class="about-item-sub">École Internationale Tunon, Nantes</div>
         </div>
-        <div class="form-group">
-          <label for="message">Message <span class="req">*</span></label>
-          <textarea id="message" name="message" placeholder="Décrivez votre projet ou votre demande…" required></textarea>
+      </div>
+      <div class="about-item">
+        <div class="about-item-ico">🌍</div>
+        <div>
+          <div class="about-item-title">Anglais bilingue · TOEIC 945/990</div>
+          <div class="about-item-sub">Lecture, écriture, oral professionnel</div>
         </div>
-        <div class="consent-block">
-          <div class="consent-line">
-            <input type="checkbox" id="consent" name="rgpd_consent" required>
-            <label for="consent">J'accepte que les informations saisies soient utilisées uniquement pour répondre à ma demande de contact, conformément à la <a href="#mentions">politique de confidentialité</a>. <span class="req">*</span></label>
-          </div>
-          <p class="consent-info">Données collectées : prénom, nom, email, message. Finalité : répondre à votre demande. Durée de conservation : 12 mois. Aucune transmission à des tiers.</p>
+      </div>
+      <div class="about-item">
+        <div class="about-item-ico">📍</div>
+        <div>
+          <div class="about-item-title">Angoulême → Bretagne</div>
+          <div class="about-item-sub">Permis B · Mobilité confirmée</div>
         </div>
-        <button type="submit" class="btn-submit" id="submitBtn">Envoyer le message →</button>
-        <div class="form-msg" id="formSuccess">✓ Message envoyé ! Je vous réponds sous 48h.</div>
-        <div class="form-msg error" id="formError">Une erreur est survenue. Réessayez ou contactez via LinkedIn.</div>
-      </form>
-      <div style="text-align:center;margin-top:24px;">
-        <a href="https://fr.linkedin.com/in/margot-larvor" target="_blank" rel="noopener noreferrer" style="font-family:'Space Mono',monospace;font-size:12px;color:#8fafc8 !important;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid #1d2f42;border-radius:6px;transition:all .2s;" onmouseover="this.style.borderColor='#00e5c8';this.style.color='#00e5c8';" onmouseout="this.style.borderColor='#1d2f42';this.style.color='#8fafc8';">🔗 Me retrouver sur LinkedIn</a>
-        <div class="ab" style="display:inline-flex;margin-left:12px;"><div class="dot"></div>Open to work</div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-ico">🔗</div>
+        <div>
+          <div class="about-item-title"><a href="https://fr.linkedin.com/in/margot-larvor" target="_blank" rel="noopener noreferrer">LinkedIn — Margot Larvor</a></div>
+          <div class="about-item-sub">#OpenToWork · Disponible en Bretagne</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MENTIONS LÉGALES -->
-<section id="mentions">
-  <div class="sh"><div><div class="st">Légal</div><h2>Mentions légales &amp; Confidentialité</h2></div></div>
-  <div class="lg">
-    <div class="lc rv">
-      <h3>// Mentions légales</h3>
-      <p><strong>Nature du site :</strong> Portfolio personnel d'une personne physique non professionnelle, à titre de présentation de compétences.</p>
-      <p><strong>Hébergement :</strong> GitHub Pages — GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA.<br><a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Politique de confidentialité GitHub →</a></p>
-      <p><strong>Propriété intellectuelle :</strong> L'ensemble du contenu est la propriété de son auteure. Toute reproduction est interdite sans autorisation.</p>
-      <p><strong>Projets clients :</strong> Les réalisations présentées sont anonymisées. Noms, raisons sociales et URLs sont volontairement masqués.</p>
-    </div>
-    <div class="lc rv">
-      <h3>// Politique de confidentialité &amp; RGPD</h3>
-      <p><strong>Responsable du traitement :</strong> Margot Larvor, personne physique non professionnelle.</p>
-      <p><strong>Données collectées via le formulaire :</strong> prénom, nom, adresse email, sujet et message.</p>
-      <p><strong>Finalité :</strong> répondre uniquement à votre demande de contact.</p>
-      <p><strong>Base légale :</strong> consentement explicite (case à cocher obligatoire, non pré-cochée).</p>
-      <p><strong>Durée de conservation :</strong> 12 mois à compter de la réception du message.</p>
-      <p><strong>Vos droits (art. 15 à 22 RGPD) :</strong> accès, rectification, suppression, limitation, opposition. Exercice des droits via <a href="https://fr.linkedin.com/in/margot-larvor" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Réclamation possible auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">CNIL</a>.</p>
-      <p><strong>Cookies :</strong> aucun cookie de tracking. Le formulaire utilise <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer">Web3Forms</a>.</p>
-    </div>
-  </div>
-</section>
+<!-- CTA -->
+<div class="cta-section">
+  <p class="cta-eyebrow">Contact</p>
+  <h2 class="cta-title">Travaillons ensemble ?</h2>
+  <p class="cta-sub">Ouverte à de nouvelles opportunités en SEO, No-code et IA. Disponible en Bretagne.</p>
+  <a href="https://fr.linkedin.com/in/margot-larvor" target="_blank" rel="noopener noreferrer" class="btn-cta">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+    Me contacter sur LinkedIn
+  </a>
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 <span>Margot Larvor</span> · SEO · No-code · IA</p>
-  <p><a href="#mentions">Mentions légales</a> &nbsp;·&nbsp; <a href="#mentions">Confidentialité</a></p>
+  <p>© 2026 Margot Larvor · Cheffe de projet web · Product Builder</p>
+  <p>
+    <a href="#hero">Haut de page</a>
+    &nbsp;·&nbsp;
+    <a href="https://fr.linkedin.com/in/margot-larvor" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    &nbsp;·&nbsp;
+    Portfolio construit avec HTML/CSS · GitHub Pages
+  </p>
 </footer>
 
 <script>
-  const obs = new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('on');});},{threshold:.08});
-  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+  // Scroll reveal
+  const obs = new IntersectionObserver(
+    entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
-  const form = document.getElementById('contactForm');
-  const btn  = document.getElementById('submitBtn');
-  const msgOk  = document.getElementById('formSuccess');
-  const msgErr = document.getElementById('formError');
-
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    msgOk.style.display='none'; msgErr.style.display='none';
-    if (!document.getElementById('consent').checked) {
-      alert('Veuillez accepter la politique de confidentialité pour envoyer votre message.');
-      return;
-    }
-    btn.disabled = true;
-    btn.textContent = 'Envoi en cours…';
-    try {
-      const data = {
-        access_key: 'a480da27-d54b-4993-b7b7-a7a6da6f7e3d',
-        subject: 'Contact depuis portfolio — Margot Larvor',
-        from_name: 'Portfolio Margot Larvor',
-        first_name: document.getElementById('fname').value,
-        last_name: document.getElementById('lname').value,
-        email: document.getElementById('email').value,
-        sujet: document.getElementById('sujet').value,
-        message: document.getElementById('message').value,
-        botcheck: ''
-      };
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
+  // Nav active state on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const scrollObs = new IntersectionObserver(
+    entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting) {
+          navLinks.forEach(a => a.style.color = '');
+          const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+          if(link) link.style.color = 'var(--black)';
+        }
       });
-      const json = await res.json();
-      if (json.success) {
-        msgOk.style.display='block';
-        msgOk.className='form-msg success';
-        form.reset();
-        btn.textContent='Message envoyé ✓';
-      } else {
-        throw new Error(json.message || 'Erreur inconnue');
-      }
-    } catch(err) {
-      console.error('Form error:', err);
-      msgErr.style.display='block';
-      btn.disabled=false;
-      btn.textContent='Envoyer le message →';
-    }
-  });
+    },
+    { threshold: 0.4 }
+  );
+  sections.forEach(s => scrollObs.observe(s));
 </script>
 </body>
 </html>
